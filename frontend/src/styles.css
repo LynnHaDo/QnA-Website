@@ -1,0 +1,65 @@
+html {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    --purple: #312A32;
+    --white: #FFFFFF;
+    --light-purple: #8E55D7;
+    --light-purple-inactive: rgba(142, 85, 215, 24);
+    --light-gray: #F5F5F5;
+    --dark-gray: #D9D9D9;
+    --yellow: #FFCC02;
+    --light-yellow: #FFEFD7;
+    --green: #9FD5B7;
+    --border-radius: 15px;
+    --button-border-radius: 10px;
+}
+
+body {
+    background-color: var(--purple);
+}
+
+h1, h2, h3, h4 {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+h5, h6 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+p, a, button {
+    text-decoration: none;
+    font-size: 16px;
+}
+
+button {
+    background-color: var(--light-purple);
+    transition: 1s ease;
+    outline: none;
+    border: none;
+    border-radius: var(--button-border-radius);
+    height: 45px;
+    color: var(--white);
+    font-weight: 600;
+    text-align: center;
+}
+
+a:hover, button:hover{
+    cursor: pointer;
+}
+
+/**************
+Login 
+**************/
+
+.login-box {
+    width: 400px;
+    height: 500px;
+    background-color: var(--white);
+    margin: auto;
+    border-radius: var(--border-radius);
+    margin-top: 10%;
+}
+
+

@@ -36,6 +36,7 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
+        <li><a href="#features">Features</a></li>
         <li><a href="#built-with">Built With</a></li>
       </ul>
     </li>
@@ -61,6 +62,16 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+### Progress
+
+- [x] Wireframes
+- [ ] Add basic Angular frontend skeleton
+- [ ] Create database
+- [ ] User authentication (Google APIs)
+
+See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
+
+<p align="right">(<a href="#top">back to top</a>)</p>
 
 ### Built With
 
