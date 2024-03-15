@@ -1,6 +1,4 @@
-html {
-    font-family: "Montserrat", sans-serif;
-    font-optical-sizing: auto;
+:root {
     --purple: #312A32;
     --white: #FFFFFF;
     --light-purple: #8E55D7;
@@ -10,8 +8,23 @@ html {
     --yellow: #FFCC02;
     --light-yellow: #FFEFD7;
     --green: #9FD5B7;
+    --red: #8B0000;
     --border-radius: 15px;
     --button-border-radius: 10px;
+    --input-height: 45px;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    overflow-x: hidden;
 }
 
 body {
@@ -39,27 +52,137 @@ button {
     outline: none;
     border: none;
     border-radius: var(--button-border-radius);
-    height: 45px;
+    height: var(--input-height);
     color: var(--white);
     font-weight: 600;
     text-align: center;
 }
 
+button.outline-btn {
+    background-color: var(--white);
+    border: 1px solid var(--dark-gray);
+    color: var(--purple)
+}
+
+a {
+    color: var(--purple);
+    font-weight: 600;
+}
+
 a:hover, button:hover{
     cursor: pointer;
+    transition: .5s ease;
+}
+
+button.fill-btn:hover {
+    background-color: var(--green);
+}
+
+button.outline-btn:hover {
+    border-color: var(--light-purple);
+    background-color: var(--light-purple);
+    color: var(--white);
+}
+
+button:disabled, button:disabled:hover {
+    background-color: var(--dark-gray);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    outline: none;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: var(--dark-green);
+    transition: background-color 5000s ease-in-out 0s;
+    box-shadow: inset 0 0 20px 20px var(--bg-color);
 }
 
 /**************
 Login 
 **************/
 
-.login-box {
+.form-box {
     width: 400px;
-    height: 500px;
     background-color: var(--white);
     margin: auto;
     border-radius: var(--border-radius);
+    padding: 40px;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px;
+}
+
+.form-box.login {
+    height: 500px;
     margin-top: 10%;
 }
+
+.form-box.signup {
+    height: 600px;
+    margin-top: 8%;
+}
+
+.form-box button {
+    width: 100%
+}
+
+.form-box .input-field {
+    width: 100%;
+    position: relative;
+}
+
+.form-box .input-field input {
+    width:100%;
+    height:var(--input-height);
+    background-color: transparent;
+    outline:none;
+    border-radius: var(--button-border-radius);
+    border: 1px solid var(--dark-gray);
+    padding-left: 20px;
+}
+
+.form-box .input-field label {
+    position: absolute;
+    top: -15px;
+    left: 15px;
+    background-color: var(--white);
+    padding: 0 5px;
+    font-size: 14px;
+    color: var(--dark-gray)
+}
+
+.form-box .form-divider {
+    display: flex;
+    align-items: center;
+}
+
+.form-box .line {
+    width: calc(100% - 100px);
+    display: block;
+    height: 1px;
+    background-color: var(--dark-gray);
+}
+
+.form-box p.decorative {
+    color: var(--dark-gray);
+    text-transform: uppercase;
+    font-weight: 200;
+    font-size: 14px;
+    margin: 0 15px;
+}
+
+.error-message {
+    margin-top: 3px;
+    text-align: left!important;
+}
+
+.error-message p {
+    font-size: 13px;
+    color: var(--red);
+    margin-bottom: 0;
+}
+
+
 
 

@@ -1,13 +1,28 @@
 <div class="container">
-  <div class="form-box login">
-    <h1>Log in to your account</h1>
+  <div class="form-box signup">
+    <h1>Sign up</h1>
     <div class="input-container mt-5">
       <form
         id="login-form"
-        [formGroup]="loginFormGroup"
+        [formGroup]="signupFormGroup"
         (ngSubmit)="onSubmit()"
       >
         <div class="input-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" />
+        </div>
+        <div
+          *ngIf="name.invalid && (name.touched || name.dirty)"
+          class="error-message"
+        >
+          <div *ngIf="name.errors?.['required']">
+            <p>Please enter your name</p>
+          </div>
+          <div *ngIf="name.errors?.['checkWhitespace']">
+            <p>Name must be at least 2 characters long</p>
+          </div>
+        </div>
+        <div class="input-field mt-4">
           <label for="email">Email</label>
           <input type="email" id="email" formControlName="email" />
         </div>
@@ -18,9 +33,7 @@
           <div *ngIf="email.errors?.['required']">
             <p>Please enter your email</p>
           </div>
-          <div
-            *ngIf="email.errors?.['pattern']"
-          >
+          <div *ngIf="email.errors?.['pattern']">
             <p>Invalid email</p>
           </div>
         </div>
@@ -29,14 +42,23 @@
           <input type="password" id="password" formControlName="password" />
         </div>
         <div
-        *ngIf="password.invalid && (password.touched || password.dirty)"
-        class="error-message"
-      >
-        <div *ngIf="password.errors?.['required']">
-          <p>Please enter your password</p>
+          *ngIf="password.invalid && (password.touched || password.dirty)"
+          class="error-message"
+        >
+          <div *ngIf="password.errors?.['required']">
+            <p>Please enter your password</p>
+          </div>
+          <div *ngIf="password.errors?.['checkWhitespace']">
+            <p>Password must be at least 8 characters long</p>
+          </div>
         </div>
-      </div>
-        <button type="submit" class="fill-btn mt-3" [disabled] = "loginFormGroup.invalid">Continue</button>
+        <button
+          type="submit"
+          class="fill-btn mt-3"
+          [disabled]="signupFormGroup.invalid"
+        >
+          Create an account
+        </button>
       </form>
       <div class = "form-divider">
         <div class = "line"></div>
@@ -48,7 +70,7 @@
         (onClick)="continueToGoogle()"
         class="outline-btn mb-4"
       >
-        Continue with Google
+        Sign up with Google
         <svg
           xmlns="http://www.w3.org/2000/svg"
           height="24"
@@ -75,6 +97,6 @@
         </svg>
       </button>
     </div>
-    <p>Don't have an account? <a routerLink="/sign-up">Sign up</a></p>
+    <p>Already have an account? <a routerLink="/log-in">Log in</a></p>
   </div>
 </div>

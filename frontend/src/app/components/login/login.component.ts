@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormValidators } from 'src/app/validators/form-validators';
 
 @Component({
   selector: 'app-login',
@@ -17,6 +18,15 @@ export class LoginComponent implements OnInit {
         ])
     })
 
+    // Getters
+    get email(){
+        return this.loginFormGroup.get('email')!;
+    }
+
+    get password(){
+        return this.loginFormGroup.get('password')!;
+    }
+
     ngOnInit(){
 
     }
@@ -24,7 +34,7 @@ export class LoginComponent implements OnInit {
     constructor(private formBuilder: FormBuilder){}
 
     onSubmit(){
-
+        console.log(this.loginFormGroup);
     }
 
     continueToGoogle(){
