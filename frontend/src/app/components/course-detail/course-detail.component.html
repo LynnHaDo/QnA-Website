@@ -1,0 +1,63 @@
+<div class="content-container row">
+    <aside class="menu-sidebar col-lg-3">
+      <div class="container">
+        <div class="container p40">
+            <div class = "mb-4">
+                <a routerLink = "/dashboard" class = "flexbox">
+                    <img src = "../../../assets/arrow-left.svg" class = "svg svg-filter-white" />
+                    Back to home
+                </a>
+            </div>
+            <h1>{{ course.code }}</h1>
+            <p>{{ course.name }}</p>
+          <ul class="menu-list">
+            <li class="active">
+              <a routerLink="/courses/{{ course.id }}/dashboard">
+                <img
+                  src="../../../assets/home.svg"
+                  class="svg svg-filter-white"
+                />
+                Dashboard
+              </a>
+            </li>
+            <li>
+              <a routerLink="/courses/{{ course.id }}/assignments">
+                <img
+                  src="../../../assets/book.svg"
+                  class="svg svg-filter-white"
+                />
+                Assignments
+              </a>
+            </li>
+            <li>
+                <a routerLink="/courses/{{ course.id }}/roster">
+                  <img
+                    src="../../../assets/users.svg"
+                    class="svg svg-filter-white"
+                  />
+                  Roster
+                </a>
+              </li>
+          </ul>
+        </div>
+      </div>
+      <app-login-status></app-login-status>
+    </aside>
+    <div class="content-wrapper col-lg-9">
+      <div class="container p40">
+        <div class = "task-bar">
+            <h1 class = "mb-4">Tasks</h1>
+
+            <div class = "row">
+                <div class = "task-item col-lg-6" *ngFor = "let task of tasks">
+                    <span></span>
+                    <p>{{ task.description }}</p>
+                </div>
+                <div *ngIf = "tasks?.length == 0">All tasks completed</div>
+            </div>
+        </div>
+        <!-- MAIN CONTENT -->
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>  

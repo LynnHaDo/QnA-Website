@@ -1,1 +1,14 @@
-<p>search-bar works!</p>
+<input
+  #searchInput
+  class="search-input"
+  type="text"
+  placeholder="Search..."
+  (keyup.enter)="doSearch(searchInput.value)"
+/>
+<button
+  class="search-button"
+  type="submit"
+  (click)="doSearch(searchInput.value)"
+>
+  <img src = "../../../assets/search.svg" class = "svg svg-filter-white" />
+</button>

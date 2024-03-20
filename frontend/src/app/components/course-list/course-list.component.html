@@ -1,0 +1,37 @@
+<div *ngIf = "instructorCourseList!.length > 0" class = "course-section mb-5">
+    <h1 class = "mb-4">Instructor courses</h1>
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-3 col-md-4 course crs-instructor mb-3" *ngFor = "let course of instructorCourseList">
+                <a routerLink = "/courses/{{ course.id }}">
+                    <div class = "course-text">
+                        <h4>{{ course.code }}</h4>
+                        <p>{{ course.name }}</p>
+                        <span>{{ course.semester + " " + course.dateCreated.getFullYear() }}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div *ngIf = "studentCourseList!.length > 0" class = "course-section">
+    <h1 class = "mb-4">Student courses</h1>
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-3 col-md-4 course crs-student mb-3" *ngFor = "let course of studentCourseList">
+                <a routerLink = "/courses/{{ course.id }}">
+                    <div class = "course-text">
+                        <h4>{{ course.code }}</h4>
+                        <p>{{ course.name }}</p>
+                        <span>{{ course.semester + " " + course.dateCreated.getFullYear() }}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+

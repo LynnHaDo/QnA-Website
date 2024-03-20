@@ -1,20 +1,58 @@
-<div class = "menu-sidebar">
-    <app-menu></app-menu>
-</div>
-
-<div class = "content-container">
-    <!-- HEADER (DESKTOP) -->
-    <header class = "header-desktop">
-        <div class = "container-fluid">
-            <div class = "search-bar">
-                <app-search-bar></app-search-bar>
+<div class="content-container row">
+  <aside class="menu-sidebar col-lg-3">
+    <div class="container">
+      <div class="container p40">
+        <ul class="menu-list">
+          <li class="active">
+            <a routerLink="/dashboard">
+              <img
+                src="../../../assets/home.svg"
+                class="svg svg-filter-white"
+              />
+              Dashboard
+            </a>
+          </li>
+          <li>
+            <a routerLink="/tasks">
+              <img
+                src="../../../assets/check-square.svg"
+                class="svg svg-filter-white"
+              />
+              Tasks
+            </a>
+          </li>
+          <li>
+            <a routerLink="/settings">
+              <img
+                src="../../../assets/settings.svg"
+                class="svg svg-filter-white"
+              />
+              Settings
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <app-login-status></app-login-status>
+  </aside>
+  <div class="content-wrapper col-lg-9">
+    <div class="container p40">
+      <!-- HEADER (DESKTOP) -->
+      <header class="header-desktop mb-3">
+        <div class="container">
+          <div class="flexbox">
+            <div class="search-bar">
+              <app-search-bar></app-search-bar>
             </div>
-            <div class = "notifications">
-                <app-notification></app-notification>
+            <div class="notifications">
+              <app-notification></app-notification>
             </div>
+          </div>
         </div>
-    </header>
+      </header>
 
-    <!-- MAIN CONTENT -->
-    <router-outlet></router-outlet>
+      <!-- MAIN CONTENT -->
+      <app-course-list></app-course-list>
+    </div>
+  </div>
 </div>
