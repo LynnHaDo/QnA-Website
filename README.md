@@ -65,7 +65,7 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 ### Progress
 
 - [x] Wireframes
-- [ ] Add basic Angular frontend skeleton
+- [x] Add basic Angular frontend skeleton
 - [ ] Create database
 - [ ] User authentication (Google APIs)
 

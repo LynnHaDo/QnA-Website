@@ -15,6 +15,10 @@ import { SearchBarComponent } from './components/search-bar/search-bar.component
 import { CourseListComponent } from './components/course-list/course-list.component';
 import { LoginStatusComponent } from './components/login-status/login-status.component';
 import { CourseDetailComponent } from './components/course-detail/course-detail.component';
+import { CourseDashboardComponent } from './components/course-dashboard/course-dashboard.component';
+import { CourseAssignmentComponent } from './components/course-assignment/course-assignment.component';
+import { CourseRosterComponent } from './components/course-roster/course-roster.component';
+import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { CourseDetailComponent } from './components/course-detail/course-detail.
     SearchBarComponent,
     CourseListComponent,
     LoginStatusComponent,
-    CourseDetailComponent
+    CourseDetailComponent,
+    CourseDashboardComponent,
+    CourseAssignmentComponent,
+    CourseRosterComponent,
+    AssignmentDetailComponent
   ],
   imports: [
     BrowserModule,
