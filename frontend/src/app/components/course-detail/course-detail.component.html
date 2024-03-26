@@ -10,9 +10,9 @@
             </div>
             <h1>{{ course.code }}</h1>
             <p>{{ course.name }}</p>
-          <ul class="menu-list">
+          <ul class="menu-list" (click) = "renderMenu($event)">
             <li class="active">
-              <a routerLink="/courses/{{ course.id }}">
+              <a routerLink=".">
                 <img
                   src="../../../assets/home.svg"
                   class="svg svg-filter-white"
@@ -21,7 +21,7 @@
               </a>
             </li>
             <li>
-              <a routerLink="/courses/{{ course.id }}/assignments">
+              <a routerLink="assignments">
                 <img
                   src="../../../assets/book.svg"
                   class="svg svg-filter-white"
@@ -30,7 +30,7 @@
               </a>
             </li>
             <li>
-                <a routerLink="/courses/{{ course.id }}/roster">
+                <a routerLink="roster">
                   <img
                     src="../../../assets/users.svg"
                     class="svg svg-filter-white"

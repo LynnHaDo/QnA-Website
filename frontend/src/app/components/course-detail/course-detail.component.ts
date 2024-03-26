@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/common/course';
 import { CourseService } from 'src/app/services/course.service';
+import { MiscService } from 'src/app/services/misc.service';
 
 @Component({
   selector: 'app-course-detail',
@@ -12,7 +13,8 @@ export class CourseDetailComponent implements OnInit {
     course!: Course;
 
     constructor(private route: ActivatedRoute,
-                private courseService: CourseService){}
+                private courseService: CourseService,
+                private miscService: MiscService){}
 
     ngOnInit(): void {
         this.route.paramMap.subscribe(() => {
@@ -25,5 +27,9 @@ export class CourseDetailComponent implements OnInit {
         this.courseService.getCourse(theCourseId).subscribe((data) => {
             this.course = data
         })
+    }
+
+    renderMenu($event: any){
+        this.miscService.renderMenu($event);
     }
 }

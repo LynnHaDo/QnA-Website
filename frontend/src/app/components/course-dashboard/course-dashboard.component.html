@@ -13,7 +13,7 @@
 <div class = "course-section">
     <h1 class = "mb-4">Active assignments</h1>
 
-    <table class="table">
+    <table class="assignment-table table">
         <thead>
           <tr>
             <th scope="col">Name</th>
@@ -27,7 +27,11 @@
             <th scope="row"><a routerLink = "assignments/{{ assignment.id }}">{{ assignment.name }}</a></th>
             <td></td>
             <td></td>
-            <td>{{ assignment.status }}</td>
+            <td>
+                <label class="checkbox-control">
+                    <input type="checkbox" (checked) = "assignment.status"/>
+                </label>
+            </td>
           </tr>
           <tr *ngIf = "activeAssignments?.length == 0">
             <td colspan="4">No active assignments</td>

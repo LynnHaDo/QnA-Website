@@ -9,34 +9,25 @@
                 </a>
             </div>
             <h1>{{ assignment.name }}</h1>
-          <ul class="menu-list">
+          <ul class="menu-list mt-4" (click) = "renderMenu($event)">
             <li class="active">
-              <a routerLink="{{ assignment.id }}">
+              <a routerLink=".">
                 <img
-                  src="../../../assets/home.svg"
+                  src="../../../assets/list.svg"
                   class="svg svg-filter-white"
                 />
-                Questions
+                Submissions
               </a>
             </li>
             <li>
-              <a routerLink="{{ assignment.id }}/assignments">
+              <a routerLink="grading-assignments">
                 <img
                   src="../../../assets/book.svg"
                   class="svg svg-filter-white"
                 />
-                Assignments
+                Grading Assignments
               </a>
             </li>
-            <li>
-                <a routerLink="{{ assignment.id }}/assignments">
-                  <img
-                    src="../../../assets/users.svg"
-                    class="svg svg-filter-white"
-                  />
-                  Roster
-                </a>
-              </li>
           </ul>
         </div>
       </div>

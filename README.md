@@ -66,8 +66,13 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 
 - [x] Wireframes
 - [x] Add basic Angular frontend skeleton
-- [ ] Create database
-- [ ] User authentication (Google APIs)
+- [ ] User authentication set-up 
+    - [x] Django models and APIs setup
+    - [ ] Django login with access & refresh tokens
+    - [ ] Angular login 
+    - [ ] Two Factor authentication
+    - [ ] Google authentication
+- [ ] Import csv data into databases
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
 

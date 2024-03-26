@@ -10,10 +10,9 @@ import { CourseRosterComponent } from './components/course-roster/course-roster.
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 
 const routes: Routes = [
+    {path: "courses/:id/assignments/:assignmentId", component: AssignmentDetailComponent},
     {path: "courses/:id", component: CourseDetailComponent, children: [
-        {path: "assignments", component: CourseAssignmentComponent, children: [
-            {path: ":id", component: AssignmentDetailComponent}
-        ]},
+        {path: "assignments", component: CourseAssignmentComponent},
         {path: "roster", component: CourseRosterComponent},
         {path: "", component: CourseDashboardComponent}
     ]},

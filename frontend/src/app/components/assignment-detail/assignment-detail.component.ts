@@ -11,6 +11,7 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class AssignmentDetailComponent {
     assignment!: Assignment;
+    miscService: any;
 
     constructor(private route: ActivatedRoute,
         private assignmentService: AssignmentService){}
@@ -19,6 +20,10 @@ export class AssignmentDetailComponent {
     this.route.paramMap.subscribe(() => {
         this.renderAssignment();
     })
+    }
+
+    renderMenu($event: any){
+        this.miscService.renderMenu($event);
     }
 
     renderAssignment(){
