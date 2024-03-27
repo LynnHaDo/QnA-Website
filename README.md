@@ -68,7 +68,7 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 - [x] Add basic Angular frontend skeleton
 - [ ] User authentication set-up 
     - [x] Django models and APIs setup
-    - [ ] Django login with access & refresh tokens
+    - [x] Django login/logout with access & refresh tokens
     - [ ] Angular login 
     - [ ] Two Factor authentication
     - [ ] Google authentication
