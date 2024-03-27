@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "rest_framework.authtoken",
     "corsheaders",
     "users",
+    "courses",
 ]
 
 MIDDLEWARE = [
@@ -115,11 +116,15 @@ REST_FRAMEWORK = {
    'DEFAULT_AUTHENTICATION_CLASSES': (
        'rest_framework.authentication.SessionAuthentication',
        'rest_framework.authentication.TokenAuthentication',
-   )
+   ),
+   'EXCEPTION_HANDLER': "core.exceptions.status_code_handler"
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_CREDENTIALS = True # allow access to refresh token in cookies
+
+EMAIL_HOST = "0.0.0.0"
+EMAIL_PORT = 1025
 
 # CORS_ALLOWED_ORIGINS = [
 #    "http://localhost:4200", 

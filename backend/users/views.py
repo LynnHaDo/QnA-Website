@@ -1,11 +1,16 @@
 import datetime
+import random
+import string
 from django.shortcuts import render
+
+from django.core.mail import send_mail
+
 from rest_framework import exceptions
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
 from .serializers import UserSerializer
-from .models import User, UserToken
+from .models import Reset, User, UserToken
 
 from .authentication import JWTAuthentication, create_access_token, create_refresh_token, decode_refresh_token
 
@@ -104,3 +109,54 @@ class LogoutAPIView(APIView):
         }
 
         return response
+
+class ForgotPasswordAPIView(APIView):
+    def post(self, request):
+        userEmail = request.data['email'] 
+
+        # Generate a random token (10 characters)
+        token = ''.join(random.choice(string.ascii_lowercase + string.digits) for _ in range(10))
+
+        Reset.objects.create(
+            email = userEmail,
+            token = token
+        )
+
+        # Connect with frontend
+        url = "http://localhost:4200/reset/" + token
+
+        send_mail(
+            subject = "QnA: Reset your password",
+            message = "Click <a href = '%s'>here</a> to reset your password" % url,
+            from_email = "from@example.com",
+            recipient_list = [userEmail]
+        )
+
+        return Response({
+            'message': 'success'
+        })
+
+class ResetPasswordAPIView(APIView):
+    def post(self, request):
+        data = request.data
+
+        if data['password'] != data['password_confirm']:
+            raise exceptions.APIException("Passwords do not match")
+        
+        reset_user = Reset.objects.filter(token = data['token']).first()
+
+        if not reset_user:
+            raise exceptions.APIException("Invalid verification link")
+        
+        user = User.objects.filter(email = reset_user.email).first()
+
+        if not user:
+            raise exceptions.APIException("User not found")
+        
+        user.set_password(data['password'])
+        user.save()
+
+        return Response({
+            'message': 'success'
+        })
+        

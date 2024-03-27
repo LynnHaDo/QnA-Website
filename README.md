@@ -80,6 +80,20 @@ See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full
 
 ### Built With
 
+- Django 5.0.3
+    - asgiref==3.8.1
+    - cffi==1.16.0
+    - cryptography==42.0.5
+    - django-cors-headers==4.3.1
+    - djangorestframework==3.15.1
+    - mysqlclient==2.2.4
+    - pycparser==2.21
+    - PyJWT==2.8.0
+    - sqlparse==0.4.4
+    - typing_extensions==4.10.0
+- Angular 16.2.12
+- MySQL 8.3.0
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
