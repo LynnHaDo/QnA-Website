@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RegisterService } from 'src/app/services/register.service';
 import { FormValidators } from 'src/app/validators/form-validators';
 
 @Component({
@@ -31,10 +33,18 @@ export class LoginComponent implements OnInit {
 
     }
 
-    constructor(private formBuilder: FormBuilder){}
+    constructor(private formBuilder: FormBuilder,
+                private authService: RegisterService,
+                private router: Router){}
 
     onSubmit(){
-        console.log(this.loginFormGroup);
+        this.authService.login(this.loginFormGroup.getRawValue()).subscribe(
+            (res: any) => {
+                this.authService.accessToken = res.token;
+                this.router.navigate(['']);
+                RegisterService.authEmitter.emit(true);
+            }
+        )
     }
 
     continueToGoogle(){

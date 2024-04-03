@@ -1,9 +1,16 @@
 <div class="login-status">
     <div class = "container">
-        <div class = "flexbox">
-            <p id="name">Lynn Do</p>
-            <a routerLink="/log-in">
+        <div class = "flexbox" *ngIf = "isAuthenticated">
+            <p id="name">{{ message }}</p>
+            <a routerLink="/" (click) = "logOut()">
             <img src="../../../assets/log-out.svg" class = "svg svg-filter-white"/>
+            </a>
+        </div>
+
+        <div class = "flexbox" *ngIf = "!isAuthenticated">
+            <p id="name">{{ message }}</p>
+            <a routerLink="/log-in">
+                <img src="../../../assets/log-in.svg" class = "svg svg-filter-white"/>
             </a>
         </div>
     </div>

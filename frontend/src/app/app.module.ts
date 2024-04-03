@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +19,8 @@ import { CourseDashboardComponent } from './components/course-dashboard/course-d
 import { CourseAssignmentComponent } from './components/course-assignment/course-assignment.component';
 import { CourseRosterComponent } from './components/course-roster/course-roster.component';
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
+
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -43,7 +45,11 @@ import { AssignmentDetailComponent } from './components/assignment-detail/assign
     NgbModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

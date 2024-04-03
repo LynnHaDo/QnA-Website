@@ -9,6 +9,12 @@ export class FormValidators {
         }
     }
 
-    
+    // Check passwords mismatch
+    static checkMismatch(pwControl: AbstractControl): ValidatorFn {
+        return (control: AbstractControl): ValidationErrors | null => {
+            const violated = control.value !== pwControl.value;
+            return violated ? { checkMismatch: true } : null;
+        }
+    }
 
 }

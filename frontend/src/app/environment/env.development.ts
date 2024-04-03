@@ -1,4 +1,5 @@
 export const env = {
     production: false,
-    courseAPI: ""
+    registerAPI: "http://localhost:8000/api",
+    courseAPI: "http://localhost:8000/course-api"
 }
