@@ -66,12 +66,11 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 
 - [x] Wireframes
 - [x] Add basic Angular frontend skeleton
-- [ ] User authentication set-up 
+- [x] User authentication set-up 
     - [x] Django models and APIs setup
     - [x] Django login/logout with access & refresh tokens
-    - [ ] Angular login 
-    - [ ] Two Factor authentication
-    - [ ] Google authentication
+    - [x] Angular login 
+    - [x] Google authentication (Bugs: Angularx Social Login package button does not work after signing in)
 - [ ] Import csv data into databases
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
