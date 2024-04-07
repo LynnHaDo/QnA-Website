@@ -1,8 +1,9 @@
+import { GoogleLoginProvider, SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/services/register.service';
-import { FormValidators } from 'src/app/validators/form-validators';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-login',
@@ -35,7 +36,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private formBuilder: FormBuilder,
                 private authService: RegisterService,
-                private router: Router){}
+                private router: Router,
+                private socialAuthService: SocialAuthService){}
 
     onSubmit(){
         this.authService.login(this.loginFormGroup.getRawValue()).subscribe(
@@ -48,6 +50,20 @@ export class LoginComponent implements OnInit {
     }
 
     continueToGoogle(){
-        
+        this.socialAuthService.signIn(GoogleLoginProvider.PROVIDER_ID).then(
+            googleUser => {
+                this.authService.googleLogin(
+                    {
+                        token: googleUser.idToken
+                    }
+                ).subscribe(
+                    (res: any) => {
+                        this.authService.accessToken = res.token;
+                        RegisterService.authEmitter.emit(true);
+                        this.router.navigate(['/']);
+                    }
+                )
+            }
+        )
     }
 }

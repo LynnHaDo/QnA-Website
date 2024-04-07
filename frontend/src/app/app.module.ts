@@ -21,6 +21,15 @@ import { CourseRosterComponent } from './components/course-roster/course-roster.
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 
 import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetComponent } from './components/reset/reset.component';
+
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
+
+import googleAuthJson from "./environment/google_oauth_secret.json"
 
 @NgModule({
   declarations: [
@@ -36,20 +45,42 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     CourseDashboardComponent,
     CourseAssignmentComponent,
     CourseRosterComponent,
-    AssignmentDetailComponent
+    AssignmentDetailComponent,
+    ForgotPasswordComponent,
+    ResetComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(googleAuthJson.web.client_id,
+                {
+                    oneTapEnabled: false
+                }
+            ),
+          }
+        ]
+      },
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -8,6 +8,8 @@ import { CourseDashboardComponent } from './components/course-dashboard/course-d
 import { CourseAssignmentComponent } from './components/course-assignment/course-assignment.component';
 import { CourseRosterComponent } from './components/course-roster/course-roster.component';
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetComponent } from './components/reset/reset.component';
 
 const routes: Routes = [
     {path: "courses/:id/assignments/:assignmentId", component: AssignmentDetailComponent},
@@ -17,6 +19,8 @@ const routes: Routes = [
         {path: "", component: CourseDashboardComponent}
     ]},
     {path: "search/:keyword", component: DashboardComponent},
+    {path: "reset-password/:token", component: ResetComponent},
+    {path: "forgot-password", component: ForgotPasswordComponent},
     {path: "log-in", component: LoginComponent},
     {path: "sign-up", component: SignUpComponent},
     {path: "dashboard", component: DashboardComponent},

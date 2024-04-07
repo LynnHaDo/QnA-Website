@@ -23,6 +23,10 @@ export class RegisterService {
     return this.httpClient.post(`${this.baseUrl}/login`, formBody, {withCredentials: true})
   }
 
+  googleLogin(formBody: any){
+    return this.httpClient.post(`${this.baseUrl}/google-auth`, formBody, {withCredentials: true})
+  }
+
   refresh(){
     return this.httpClient.post(`${this.baseUrl}/refresh`, {}, {withCredentials: true})
   }

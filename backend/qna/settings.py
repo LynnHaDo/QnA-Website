@@ -117,7 +117,7 @@ REST_FRAMEWORK = {
        'rest_framework.authentication.SessionAuthentication',
        'rest_framework.authentication.TokenAuthentication',
    ),
-   'EXCEPTION_HANDLER': "core.exceptions.status_code_handler"
+   'EXCEPTION_HANDLER': "users.exceptions.status_code_handler"
 }
 
 CORS_ORIGIN_ALLOW_ALL = True

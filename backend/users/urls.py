@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import ForgotPasswordAPIView, RegisterAPIView, LoginAPIView, UserAPIView, RefreshAPIView, LogoutAPIView, ResetPasswordAPIView
+from .views import ForgotPasswordAPIView, GoogleAuthAPIView, RegisterAPIView, LoginAPIView, UserAPIView, RefreshAPIView, LogoutAPIView, ResetPasswordAPIView
 
 urlpatterns = [
     path("register", RegisterAPIView.as_view()),
@@ -9,5 +9,6 @@ urlpatterns = [
     path("refresh", RefreshAPIView.as_view()),
     path("logout", LogoutAPIView.as_view()),
     path("forgot", ForgotPasswordAPIView.as_view()),
-    path("reset", ResetPasswordAPIView.as_view())
+    path("reset", ResetPasswordAPIView.as_view()),
+    path("google-auth", GoogleAuthAPIView.as_view())
 ]
