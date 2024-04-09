@@ -40,8 +40,10 @@ INSTALLED_APPS = [
     "rest_framework",
     "rest_framework.authtoken",
     "corsheaders",
+    "django_extensions",
     "users",
     "courses",
+    "scripts"
 ]
 
 MIDDLEWARE = [
@@ -86,7 +88,10 @@ DATABASES = {
         "USER": "root",
         "PASSWORD": "Halinh23032003*",
         "HOST": "localhost",
-        "PORT": "3306"
+        "PORT": "3306",
+        "OPTIONS": {
+            "charset": "utf8mb4"
+        }
     }
 }
 

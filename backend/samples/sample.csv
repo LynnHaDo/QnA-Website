@@ -1,0 +1,218 @@
+Timestamp,,Score,Which of the following types can represent the decimal number 14277283 in memory?,"After seeing Malte's demonstration of the add function in lecture (and being amazed at an image causing party hats to fall from the sky), Nick wants to see if he can create a program that interprets the image as numbers and adds them up. He changes the addf code from lecture to read a image from a file into memory, interpret these bytes as integers, and add them! Will Nick's idea work?","What question(s) do you have on this lecture's material? If you don't have any questions, please tell us what part of the material you feel least confident in, or if you feel comfortable with all of the material, please put N/A.",Do you have any feedback on the lecture? (optional),Rate this meme out of 10 (Optional)
+1/30/2024 19:39:23,2@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",what exactly is extern? what is char*?,,6
+1/30/2024 19:42:28,3@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/30/2024 19:43:31,4@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 19:51:29,5@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/30/2024 20:05:31,6@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 20:08:07,7@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,2
+1/30/2024 20:16:35,8@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/30/2024 20:19:03,9@brown.edu,4 / 5,"long, int","No, because the data is an image, not something declared as type short, int, or long",N/A,,5
+1/30/2024 20:22:58,10@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,4
+1/30/2024 20:23:55,11@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 20:34:52,12@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","I don't really understand how addresses and memory works. When you load the image into ""memory"" and search for the offset of 10393, how does the computer know where to find the actual address on the computer (which is presumably one out of 8 billion bytes)? 
+
+Also, how does the computer know how to stop reading the values in each of the mailboxes? If ""8d 04 37 c3"" didn't end in ""c3"", would the computer just keep running all of the values it encounters? And do ""8d"" or ""04"" individually have meaningful semantics, or is it the very specific combination ""8d 04 37 c3""?",,4
+1/30/2024 20:40:03,13@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel a little uncertain with the party hat demonstration,,5
+1/30/2024 20:42:01,14@brown.edu,3 / 5,int,"No, because the image is too big to fit into any of the number types (short, int, or long)",N/A,,7
+1/30/2024 21:00:35,15@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/30/2024 21:00:41,16@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,5
+1/30/2024 21:00:51,17@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","From working on Snake, I am least confident in debugging.",,4
+1/30/2024 21:02:05,18@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/30/2024 21:02:43,19@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Not yet... 😉,5
+1/30/2024 21:03:29,20@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 21:04:19,21@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","The part I'm least confident about is actually writing programs in C, but I anticipate that will be cleared up more later.",,
+1/30/2024 21:05:43,22@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/30/2024 21:05:45,23@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",How do we deal with decimal or negative numbers?,,7
+1/30/2024 21:13:08,24@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 21:16:54,25@brown.edu,4 / 5,long,"Yes, because the image is just bytes that the program can interpret as whatever it wants",na,,10
+1/30/2024 21:17:15,26@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","In lecture, Malte said that C is a language without much safety against ""cutting your legs off."" Is it possible, through some mistake with pointing to the wrong address or storing unintended bytes in memory, to have a bug in your code that crashes your computer or deletes important files?",,7
+1/30/2024 21:19:10,27@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","I'm least comfortable with understanding how, if everything is just bytes, how does the computer actually recieve the instructions on how to interpret them. i.e. how does the computer know how to interpret the bytes that inform the computer on how to interpret other bytes",,10
+1/30/2024 21:22:22,28@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","I am still not completely comfortable with the idea that a series of numbers stored in memory can be interpreted by a machine as a program to add numbers. It would be really cool to see how the assembly code actually works because right now I am just kind of trusting blindly that the numbers actually can ""add.""",,10
+1/30/2024 21:23:30,29@brown.edu,4 / 5,"int, long","No, because the data is an image, not something declared as type short, int, or long",I was a little confused about how the location of the party hat was randomized to change in space. ie what was it that constructed the white space before.. were you printing spaces or setting the location of where the party hat should appear? ,,8
+1/30/2024 21:24:21,30@brown.edu,3 / 5,long,"No, because the data is an image, not something declared as type short, int, or long",N/A,,9
+1/30/2024 21:25:57,31@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",None,Very engaging!,10
+1/30/2024 21:26:18,32@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I'm a little confused on how the programs that interpret images as bytes work,,6
+1/30/2024 21:26:30,33@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/30/2024 21:28:54,34@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I'm ready to learn more C/C++!!!!,,6
+1/30/2024 21:28:57,35@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 21:30:32,36@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",Why does a given collection of bits produce given behavior in the computer? Is there any way for a human to interpret a collection of bytes/figure out what they would do when run?,,10
+1/30/2024 21:30:53,37@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,It is so organized and engaging!,2
+1/30/2024 21:35:06,38@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 21:35:13,39@brown.edu,4 / 5,short,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I am not sure what the application of the memory topic we did is. I am trying to relate it to Snake and I am stuck,There seems to be underlying assumptions and I am mostly lost,4
+1/30/2024 21:41:24,40@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/30/2024 21:42:27,41@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/30/2024 21:42:46,42@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,"The pacing so far is great–slow enough to understand, but fast enough to keep me on the edge of my seat.",8
+1/30/2024 21:42:50,43@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/30/2024 21:44:38,44@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,10
+1/30/2024 21:45:20,45@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/30/2024 21:45:54,46@brown.edu,4 / 5,"long, int","Yes, but only if Nick declares each number as a variable first",N/A,,7
+1/30/2024 21:51:05,47@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/30/2024 21:51:31,48@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 21:58:40,49@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I felt most lost about the part where the image was being used to create different functions. I'm also not clear on what the offset exactly was (offsetting the number of bytes? the address?),It's a little fast paced ,10
+1/30/2024 21:59:14,50@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",Still a little confused on the add function with the array of bits,,9
+1/30/2024 22:01:54,51@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I think someone asked about how the computer knows when to stop interpreting each set of bytes in the chain of addresses.,,10
+1/30/2024 22:05:58,52@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 22:20:43,53@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/30/2024 22:20:50,54@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/30/2024 22:24:29,55@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,10
+1/30/2024 22:35:33,56@brown.edu,3 / 5,int,"Yes, but only if Nick declares each number as a variable first",N/A,,6
+1/30/2024 22:36:25,57@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,I love the interactivity!,8
+1/30/2024 22:36:39,58@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 22:38:21,59@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel least confident in the portion about how we can program our computer to know when we use multiple memory slots.,,9
+1/30/2024 22:41:05,60@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","So is every ""mail box"" 8 bytes? Or are they still each 1 byte? I'm confused why a pointer took up 8 bytes. Is this because the largest possible spot in memory might need to use all that space? Also is every place in memory accessed through a pointer then that goes to that spot? Or are some spots accessed by just going to them directly? I think I'm still a little confused about how much each spot in memory has and how pointers come in to play with that.",it was fab 🎉🎉🎉🎉,5
+1/30/2024 22:45:33,61@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",Still trying to understand why the bytes represent the add function.,,5
+1/30/2024 22:51:33,62@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","I am still a bit confused on how pointers work. I understand the diagrams and the concept, I think I just need to see some more examples in code. I know we are doing this during lecture 3 though.",,7
+1/30/2024 23:13:36,63@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 23:14:16,64@brown.edu,4 / 5,long,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/30/2024 23:32:58,65@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 23:35:19,66@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/30/2024 23:37:07,67@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",How did the comment section of the jpeg work to create the party hats? Why did the computer code look at the comment and not the contents of the file?,,10
+1/30/2024 23:44:06,68@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Great speed and excellent explanations. I feel that I am learning and being challenged without completely drowning in the material (thank you!!!). ,10
+1/30/2024 23:48:19,69@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/30/2024 23:50:24,70@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,4
+1/31/2024 0:04:19,71@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I am a little confused about the concept of addresses and how they are stored in memory. And how these stored addresses point to the their respective bytes in memory. ,,7
+1/31/2024 0:06:24,72@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,4
+1/31/2024 0:17:08,73@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",The first part of lecture I was a bit confused,,2
+1/31/2024 0:34:22,74@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,7
+1/31/2024 0:57:13,75@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 1:03:35,76@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","What datatype options do I have in C if I wanted to store an arbitrarily large number, like in Python? What if my desired number was larger than the largest integer datatype available?",The questions disappear on the course feedback system quite fast - would it be possible to decrease/disable the decay time of questions and instead have the instructor check off answered questions manually?,5
+1/31/2024 1:04:37,77@brown.edu,3 / 5,"short, long","No, because the data is an image, not something declared as type short, int, or long",N/A,,10
+1/31/2024 1:07:40,78@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants","I think I kind of want to reconfirm the reason why we can add the number/ call emoji function if the image has already been embedded to the corresponding byte machine code, why is it necessary to run the addf.o?",,10
+1/31/2024 1:43:37,79@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,10
+1/31/2024 1:45:15,80@brown.edu,4 / 5,long,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 1:48:35,81@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I think not understanding machine code is making it a bit difficult for me to understand the pipeline of how a function knows what to do with the values it is given (like in the addf and party emoji examples from class),,
+1/31/2024 2:35:32,82@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,4
+1/31/2024 8:45:24,83@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,2
+1/31/2024 8:56:36,84@brown.edu,4 / 5,long,"Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,3
+1/31/2024 9:04:16,85@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/a,It was fun!,8
+1/31/2024 9:27:27,86@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,9
+1/31/2024 9:53:19,87@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 10:13:44,88@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 10:17:52,89@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 10:20:13,90@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 10:25:16,91@brown.edu,4 / 5,"int, long","No, because the image is too big to fit into any of the number types (short, int, or long)",N/A,,8
+1/31/2024 10:25:51,92@brown.edu,3 / 5,long,"Yes, but only if Nick declares each number as a variable first","Still a little hazy on general C functionality, but I am planning to work through it on my own time.","(not important) I would very much like the fact that ""Edward from Stephanie Meyer's Twilight (2005) is named after HTA Ed (2001)"" to be explained. I need to know how this is true",9
+1/31/2024 10:30:36,93@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I think I am still not that comfortable with knowing when to use short vs. int vs. long.,,6
+1/31/2024 10:37:40,94@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/31/2024 11:07:30,95@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 11:10:15,96@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel least confident with pointers and addresses. I think with practice I'll better understand them,,6
+1/31/2024 11:37:04,97@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/31/2024 11:47:02,98@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 11:53:34,99@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",the explanation for nullpointers confused me a bit,,
+1/31/2024 11:56:17,100@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",The pointers and addresses in memory,,
+1/31/2024 12:01:59,101@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 12:02:01,102@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,n/a,8
+1/31/2024 12:14:00,103@brown.edu,4 / 5,"long, int","No, because the data is an image, not something declared as type short, int, or long",N/A,,10
+1/31/2024 12:29:54,104@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","We say there's nothing in memory that corresponds with types, and the onus is on the program to tell the computer how to interpret different bytes. I expect we'll go into this in more detail later but what this means is still not clear to me.",,9
+1/31/2024 12:55:10,105@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/31/2024 12:58:24,106@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 13:01:05,107@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I'm still a little confused on how the computer understands if a strand of boxes in memory is a pointer or something else (as it can represent many things). I believe this question was answered in class but I'm still a little confused about it currently. ,,10
+1/31/2024 13:29:57,108@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","I'm not sure if this was answered already, but when looking at the machine code version of the add function, why is ""8d 04 37"" stored at index/line 0, while ""c3"" is stored at index/line 3? Or are they not indices or line numbers, but just a part of the machine code?",,
+1/31/2024 13:41:38,109@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",The demo at the end,,3
+1/31/2024 14:04:01,110@brown.edu,4 / 5,"int, long","No, because the image is too big to fit into any of the number types (short, int, or long)",N/A,,
+1/31/2024 14:08:57,111@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","C syntax and how to design a program in C
+While I understand how numbers can be represented as bytes, I don't understand how text/images/etc. are",,10
+1/31/2024 14:15:04,112@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/31/2024 14:16:01,113@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","I feel as though some of the content related to the final example shown in class (leveraging an array of bytes to represent the ""add"" function) went over my head. ",,10
+1/31/2024 14:45:47,114@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,"More interactive lectures, for example more time to talk or time to solve certain problems.  ",9
+1/31/2024 14:47:09,115@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 14:47:31,116@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,3
+1/31/2024 14:47:41,117@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 15:11:55,118@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A!,,10
+1/31/2024 15:16:59,119@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Nope.,1
+1/31/2024 15:17:22,120@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 15:29:15,121@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,9
+1/31/2024 15:36:15,122@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","- if you have multiple extern functions in a file, how will the computer know which extern function to fill up based on the file you provided? is this a situation that happens
+
+- in term of the bytes that cause addition being in the image at the beginning of lecture, do the bytes needs to be consecutive, or do they just need to exist in the image. i was getting some feeling that it would be consecutive but I wasn't sure. ",,8
+1/31/2024 15:44:57,123@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",feel list confident with syntax,,
+1/31/2024 15:48:00,124@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/31/2024 16:08:22,125@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,9
+1/31/2024 16:45:17,126@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,5
+1/31/2024 16:55:38,127@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,9
+1/31/2024 16:57:44,128@brown.edu,4 / 5,long,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Nope,9
+1/31/2024 17:04:58,129@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",In lecture we talked about the max for each type being eg. 2^(8*4)-1  for int. Do we have to consider negative numbers for the max value?,,9
+1/31/2024 17:11:47,130@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",What is -o?,,
+1/31/2024 17:12:17,131@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,10
+1/31/2024 17:18:19,132@brown.edu,3 / 5,long,"No, because the data is an image, not something declared as type short, int, or long",N/A,,6
+1/31/2024 17:28:13,133@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I felt least confident with the idea of pointers in C,,10
+1/31/2024 17:37:35,134@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,4
+1/31/2024 17:38:06,135@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",None so far!,,10
+1/31/2024 17:42:34,136@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 17:44:19,137@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","If programs are just bytes in memory, does the idea of using multiple bytes/post office boxes to store a large number apply to long/complex programs or are all programs stored equally?",,10
+1/31/2024 17:53:28,138@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I am least confident about the addf part.,,
+1/31/2024 18:01:15,139@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I'm still confused as to how bytes store information. I understand how they're used to store data/information.,,6
+1/31/2024 18:02:26,140@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","I would like to talk more about C syntax. Also, I would like to talk more about the 8d, 04, 37, C3 part of the lecture. ",,4
+1/31/2024 18:22:19,141@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/31/2024 18:30:56,142@brown.edu,3 / 5,int,"No, because the data is an image, not something declared as type short, int, or long","It's a bit hard to visualize the postal boxes. Also, in the physical depiction that Malte put on the board it seemed that the program would go from right to left when accessing the boxes?  Does this matter in any way when it comes to implementation?",,10
+1/31/2024 18:35:02,143@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I am having a difficult time seeing the big picture in terms of bytes and storage. Is there some visual or top-down explanation that could help me?,,3
+1/31/2024 19:05:07,144@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",What is exactly looks like/means to store a function as bytes. How can you just include that in an image? Why does it output gray? ,,9
+1/31/2024 19:05:10,145@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel like I understand the innerworkings of memory a lot more now,,6
+1/31/2024 19:08:57,146@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants","will doing something like shoving a long into an int like in the addition program yield a warning, or does C just go 'yeah ok whatever' and not warn you?",,4
+1/31/2024 19:10:51,147@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel uncertain about bytes and fully understanding their purpose,,9
+1/31/2024 19:16:17,148@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,can we take a quick stretch break?,8
+1/31/2024 19:17:03,149@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 19:25:06,150@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","I still don't really understand how a byte can be interpreted by a computer in multiple ways... I know it can happen because it was in lecture, but I cannot wrap my brain around how",,10
+1/31/2024 19:33:44,151@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 19:37:23,152@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 19:53:58,153@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,
+1/31/2024 20:02:48,154@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",Machine code vs memory is still a confusing concept (i.e: how does the computer know to translate the simple bytes into the party hat images?),,4
+1/31/2024 20:05:53,155@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,
+1/31/2024 20:06:51,156@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",What is after a a long? ,,10
+1/31/2024 20:15:10,157@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 20:18:46,158@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I am still shaky on the concept of storing images as bytes and how a command line that calls the pixel can make a bunch of confettis,,5
+1/31/2024 20:21:42,159@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+1/31/2024 20:25:39,160@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 20:29:38,161@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 20:32:15,162@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,10
+1/31/2024 20:47:51,163@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 20:53:04,164@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel a bit uncomfortable with my understanding of pointers so far. I am not sure why a memory partition for pointers is required for programs to work.,,8
+1/31/2024 21:00:44,165@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,5
+1/31/2024 21:01:50,166@brown.edu,4 / 5,"short, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,6
+1/31/2024 21:16:55,167@brown.edu,3 / 5,long,"No, because the image is too big to fit into any of the number types (short, int, or long)",N/A,,8
+1/31/2024 21:22:14,168@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A ,,4
+1/31/2024 21:24:54,169@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 21:31:06,170@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,"I loved the pacing. I've been overwhelmed by lectures in past CS courses, but this lecture was so beautifully paced.  I would love it if we could continue with this pace!",10
+1/31/2024 21:42:56,171@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Pretty cool and good pace,4
+1/31/2024 21:43:26,172@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 21:47:17,173@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 21:50:38,174@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 21:53:29,175@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 21:54:37,176@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I would like to learn more examples of pointers and functions in C ,,9
+1/31/2024 21:59:11,177@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 22:07:47,178@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 22:07:59,179@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel least confident in the usage of the add function and all of the C syntax. ,,10
+1/31/2024 22:15:56,180@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I feel that I am least confident about the concepts of pointers. ,,8
+1/31/2024 22:16:57,181@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants","I don't know the difference between add, addc, addf etc,... I hope to have a better understanding of different words in C (like gcc, vim, etc)",,10
+1/31/2024 22:26:58,182@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",c syntax,,
+1/31/2024 22:33:24,183@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 22:37:21,184@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",What's the max amount of bytes a computer would realistically need to run effectively?,,8
+1/31/2024 22:44:16,185@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 22:55:56,186@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 23:06:48,187@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants","I'm not really sure, because I don't think I'm familiar enough to know what part I'm lacking, specifically? I think I'm a bit confused about types and storage in memory, specifically, and if there's a difference with types elsewhere. Also, I'm just not very comfortable with using the terminal yet, but I'm hoping that more familiarity and practice will help with that!",,8
+1/31/2024 23:08:09,188@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,
+1/31/2024 23:15:01,189@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,3
+1/31/2024 23:16:50,190@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,N/A,7
+1/31/2024 23:21:03,191@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+1/31/2024 23:22:39,192@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",A little shaky on the C stuff.,,4
+1/31/2024 23:25:02,193@brown.edu,4 / 5,short,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I was a still a bit confused about memory still but I honestly felt like this weeks lecture was so much straightforward. ,,7
+1/31/2024 23:25:20,194@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",I struggle with understanding the function of a pointer. ,,10
+1/31/2024 23:40:38,195@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,
+1/31/2024 23:44:10,196@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,,8
+1/31/2024 23:48:25,197@brown.edu,3 / 5,int,"No, because the data is an image, not something declared as type short, int, or long",N/A,,
+1/31/2024 23:48:54,198@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants","I feel pretty comfortable, although I'm not sure how the computer knows when adjacent memory slots are supposed to be interpreted together (I guess that's part of the program since the computer is dumb?)",I really enjoyed the demonstration of how to add numbers with the picture. ,10
+1/31/2024 23:50:49,199@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 23:50:54,200@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants","I feel least confident in general maneuvering around the terminal, such as how to view the code for a function, quitting, and what vim is.",,8
+1/31/2024 23:54:43,201@brown.edu,5 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+1/31/2024 23:55:58,202@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",I didn't fully understand the code example we walked through in class in connection to how bytes are stored as types. I will rewatch the lecture 😀.,,8
+1/31/2024 23:57:47,203@brown.edu,4 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",n/a,So far lectures have been very good.,6
+1/31/2024 23:58:43,204@brown.edu,4 / 5,"long, int","Yes, but only if Nick declares each number as a variable first",I'm slightly confused about whether a variable is necessary or not for adding bytes as integers,,6
+1/31/2024 23:59:05,205@brown.edu,5 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",Probably memory pointers and hexadecimal math are my biggest issues,,10
+2/1/2024 16:15:51,206@brown.edu,4 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,7
+2/1/2024 17:33:35,207@brown.edu,4 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,Awesome lecture!,10
+2/1/2024 20:39:35,208@brown.edu,0 / 5,"short, long, int","No, because the data is an image, not something declared as type short, int, or long",n/a,,
+2/2/2024 8:47:20,209@brown.edu,4 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8
+2/3/2024 21:20:39,210@brown.edu,2 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+2/5/2024 0:05:37,211@brown.edu,4 / 5,"long, int","Yes, because the image is just bytes that the program can interpret as whatever it wants",No question ,,
+2/5/2024 22:48:28,212@brown.edu,2 / 5,int,"Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,10
+2/10/2024 1:36:18,213@brown.edu,4 / 5,"int, long","Yes, because the image is just bytes that the program can interpret as whatever it wants",N/A,,8

@@ -71,7 +71,8 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
     - [x] Django login/logout with access & refresh tokens
     - [x] Angular login 
     - [x] Google authentication (Bugs: Angularx Social Login package button does not work after signing in)
-- [ ] Import csv data into databases
+- [x] Create Python scripts to import CSV into database
+- [x] Set up Django APIs to send answers to questions
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
 
