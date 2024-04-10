@@ -11,6 +11,9 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+    
+    showWarningMsg = false;
+
     loginFormGroup: FormGroup = this.formBuilder.group({
         email: new FormControl('', [
             Validators.required,
@@ -43,8 +46,14 @@ export class LoginComponent implements OnInit {
         this.authService.login(this.loginFormGroup.getRawValue()).subscribe(
             (res: any) => {
                 this.authService.accessToken = res.token;
-                this.router.navigate(['']);
                 RegisterService.authEmitter.emit(true);
+                RegisterService.isAuthenticated.next(true);
+                this.router.navigate(['']);
+            },
+            (error: any) => {
+                if (error.status == 401){
+                    this.showWarningMsg = true
+                }
             }
         )
     }

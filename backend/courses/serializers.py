@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from courses.models import Course, Question, Answer
+from courses.models import Course, Question, Answer, Assignment
 
 """
 Serialize course
@@ -12,6 +12,16 @@ class CourseSerializer(ModelSerializer):
     # Called when a course is created
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data) # create user with data (other than password)
+        instance.save()
+        return instance
+
+class AssignmentSerializer(ModelSerializer):
+    class Meta:
+        model = Assignment 
+        fields = ['id', 'name', 'publishedStatus', 'dueDate', 'courseId']
+
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data)
         instance.save()
         return instance
 

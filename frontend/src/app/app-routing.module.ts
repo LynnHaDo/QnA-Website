@@ -10,20 +10,23 @@ import { CourseRosterComponent } from './components/course-roster/course-roster.
 import { AssignmentDetailComponent } from './components/assignment-detail/assignment-detail.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetComponent } from './components/reset/reset.component';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
+import { authGuard } from './interceptors/auth.guard';
+
 
 const routes: Routes = [
-    {path: "courses/:id/assignments/:assignmentId", component: AssignmentDetailComponent},
-    {path: "courses/:id", component: CourseDetailComponent, children: [
+    {path: "courses/:id/assignments/:assignmentId", canActivate: [authGuard], component: AssignmentDetailComponent},
+    {path: "courses/:id", component: CourseDetailComponent, canActivate: [authGuard], children: [
         {path: "assignments", component: CourseAssignmentComponent},
         {path: "roster", component: CourseRosterComponent},
         {path: "", component: CourseDashboardComponent}
     ]},
-    {path: "search/:keyword", component: DashboardComponent},
+    {path: "search/:keyword", component: DashboardComponent, canActivate: [authGuard]},
     {path: "reset-password/:token", component: ResetComponent},
     {path: "forgot-password", component: ForgotPasswordComponent},
     {path: "log-in", component: LoginComponent},
     {path: "sign-up", component: SignUpComponent},
-    {path: "dashboard", component: DashboardComponent},
+    {path: "dashboard", component: DashboardComponent, canActivate: [authGuard]},
     {path: "", redirectTo: "/dashboard", pathMatch: "full"},
     {path: "**", redirectTo: "/dashboard", pathMatch: "full"}
 ];

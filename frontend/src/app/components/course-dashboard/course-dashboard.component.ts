@@ -26,10 +26,7 @@ export class CourseDashboardComponent {
 
     render(){
         const theCourseId: number = +this.route.snapshot.paramMap.get('id')!;
-        this.courseService.getTasks(theCourseId).subscribe((data) => {
-            this.tasks = data;
-        })
-        this.assignmentService.getActiveAssignments(theCourseId).subscribe((data) => {
+        this.courseService.getAssignments(theCourseId).subscribe((data) => {
             this.activeAssignments = data
         })
     }

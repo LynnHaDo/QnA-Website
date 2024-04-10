@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from 'src/app/common/assignment';
 import { Task } from 'src/app/common/task';
 import { AssignmentService } from 'src/app/services/assignment.service';
@@ -14,7 +14,9 @@ export class CourseAssignmentComponent {
     assignments: Assignment[] = [];
 
     constructor(private route: ActivatedRoute,
-        private assignmentService: AssignmentService){}
+        private courseService: CourseService, 
+        private router: Router
+        ){}
     
         ngOnInit(): void {
             this.route.paramMap.subscribe(() => {
@@ -23,8 +25,8 @@ export class CourseAssignmentComponent {
         }
     
         render(){
-            const theCourseId: number = +this.route.snapshot.paramMap.get('id')!;
-            this.assignmentService.getAssignments(theCourseId).subscribe((data) => {
+            const theCourseId: number = parseInt(this.router.url.split("/assignments")[0].split('courses/')[1]);
+            this.courseService.getAssignments(theCourseId).subscribe((data) => {
                 this.assignments = data
             })
         }

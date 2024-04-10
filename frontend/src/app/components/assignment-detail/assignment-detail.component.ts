@@ -29,8 +29,8 @@ export class AssignmentDetailComponent {
     renderAssignment(){
     const theCourseId: number = +this.route.snapshot.paramMap.get('id')!;
     const theAssignmentId: number = +this.route.snapshot.paramMap.get('assignmentId')!;
-    this.assignmentService.getAssignment(theCourseId, theAssignmentId).subscribe((data) => {
+    /*this.assignmentService.getAssignment(theCourseId, theAssignmentId).subscribe((data) => {
         this.assignment = data
-    })
+    })*/
     }
 }

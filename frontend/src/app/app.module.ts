@@ -24,7 +24,7 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetComponent } from './components/reset/reset.component';
 
-import { SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { SocialLoginModule, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';

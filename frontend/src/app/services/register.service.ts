@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { EventEmitter, Injectable } from '@angular/core';
 import { env } from '../environment/env.development';
 import { FormGroup } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -9,6 +10,7 @@ import { FormGroup } from '@angular/forms';
 export class RegisterService {
 
     static authEmitter = new EventEmitter<boolean>();
+    static isAuthenticated = new BehaviorSubject<boolean>(false);
 
     private baseUrl = env.registerAPI;
     accessToken = ''

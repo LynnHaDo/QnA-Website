@@ -15,7 +15,11 @@
             <th scope="row"><a routerLink = "{{ assignment.id }}">{{ assignment.name }}</a></th>
             <td></td>
             <td></td>
-            <td>{{ assignment.status }}</td>
+            <td>
+                <label class="checkbox-control">
+                    <input type="checkbox" (checked) = "assignment.publishedStatus"/>
+                </label>
+            </td>
           </tr>
           <tr *ngIf = "assignments?.length == 0">
             <td colspan="4">No active assignments</td>

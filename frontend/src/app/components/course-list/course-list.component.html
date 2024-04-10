@@ -1,4 +1,4 @@
-<div *ngIf = "instructorCourseList!.length > 0" class = "course-section mb-5">
+<div *ngIf = "instructorCourseList!.length > 0 || taCourseList!.length > 0" class = "course-section mb-5">
     <h1 class = "mb-4">Instructor courses</h1>
 
     <div class = "container">
@@ -8,7 +8,7 @@
                     <div class = "course-text">
                         <h4>{{ course.code }}</h4>
                         <p>{{ course.name }}</p>
-                        <span>{{ course.semester + " " + course.dateCreated.getFullYear() }}</span>
+                        <span>{{ course.semester }}</span>
                     </div>
                 </a>
             </div>
@@ -27,11 +27,17 @@
                     <div class = "course-text">
                         <h4>{{ course.code }}</h4>
                         <p>{{ course.name }}</p>
-                        <span>{{ course.semester + " " + course.dateCreated.getFullYear() }}</span>
+                        <span>{{ course.semester }}</span>
                     </div>
                 </a>
             </div>
         </div>
+    </div>
+</div>
+
+<div *ngIf = "studentCourseList!.length == 0 && instructorCourseList!.length == 0 && taCourseList!.length == 0">
+    <div class = "alert alert-warning" style = "text-align: center;">
+        {{message}}
     </div>
 </div>
 

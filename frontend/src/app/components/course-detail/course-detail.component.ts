@@ -10,7 +10,7 @@ import { MiscService } from 'src/app/services/misc.service';
   styleUrls: ['./course-detail.component.css']
 })
 export class CourseDetailComponent implements OnInit {
-    course!: Course;
+    course: Course = new Course();
 
     constructor(private route: ActivatedRoute,
                 private courseService: CourseService,
