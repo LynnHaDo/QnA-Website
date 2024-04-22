@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from 'src/app/common/assignment';
 import { AssignmentService } from 'src/app/services/assignment.service';
 import { CourseService } from 'src/app/services/course.service';
@@ -27,10 +27,9 @@ export class AssignmentDetailComponent {
     }
 
     renderAssignment(){
-    const theCourseId: number = +this.route.snapshot.paramMap.get('id')!;
     const theAssignmentId: number = +this.route.snapshot.paramMap.get('assignmentId')!;
-    /*this.assignmentService.getAssignment(theCourseId, theAssignmentId).subscribe((data) => {
+    this.assignmentService.getAssignment(theAssignmentId).subscribe((data) => {
         this.assignment = data
-    })*/
+    })
     }
 }

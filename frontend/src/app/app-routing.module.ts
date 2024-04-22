@@ -12,10 +12,16 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetComponent } from './components/reset/reset.component';
 import { AuthInterceptor } from './interceptors/auth.interceptor';
 import { authGuard } from './interceptors/auth.guard';
-
+import { AssignmentSubmissionsComponent } from './components/assignment-submissions/assignment-submissions.component';
+import { GradingAssignmentComponent } from './components/grading-assignment/grading-assignment.component';
+import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 
 const routes: Routes = [
-    {path: "courses/:id/assignments/:assignmentId", canActivate: [authGuard], component: AssignmentDetailComponent},
+    {path: "courses/:id/assignments/:assignmentId", canActivate: [authGuard], component: AssignmentDetailComponent, children: [
+        {path: "", component: AssignmentSubmissionsComponent},
+        {path: "grading-assignments", component: GradingAssignmentComponent},
+        {path: "questions/:questionId", component: QuestionDetailComponent}
+    ]},
     {path: "courses/:id", component: CourseDetailComponent, canActivate: [authGuard], children: [
         {path: "assignments", component: CourseAssignmentComponent},
         {path: "roster", component: CourseRosterComponent},

@@ -12,8 +12,6 @@ import { FormValidators } from 'src/app/validators/form-validators';
 export class ResetComponent {
     cls = "";
     msg = "";
-    email = "";
-    storage: Storage = sessionStorage;
 
     resetFormGroup: FormGroup = this.formBuilder.group({
         password: new FormControl('', [
@@ -36,7 +34,6 @@ export class ResetComponent {
 
     ngOnInit(): void {
         this.resetFormGroup!.get("password_confirm")?.addValidators(FormValidators.checkMismatch(this.resetFormGroup?.get("password")!));
-        this.email = this.storage.getItem("email")!;
     }
 
     constructor(private formBuilder: FormBuilder, private resetServices: ResetService,
@@ -66,9 +63,5 @@ export class ResetComponent {
                 }
             }
         )
-    }
-
-    continueToGoogle(){
-        
     }
 }

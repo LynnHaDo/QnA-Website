@@ -25,7 +25,7 @@ export class CourseAssignmentComponent {
         }
     
         render(){
-            const theCourseId: number = parseInt(this.router.url.split("/assignments")[0].split('courses/')[1]);
+            const theCourseId: number = +this.router.url.split("/assignments")[0].split('courses/')[1];
             this.courseService.getAssignments(theCourseId).subscribe((data) => {
                 this.assignments = data
             })

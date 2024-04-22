@@ -4,6 +4,7 @@ import { Course } from '../common/course';
 import { Observable } from 'rxjs';
 import { env } from '../environment/env.development';
 import { Assignment } from '../common/assignment';
+import { Student } from '../common/student';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,16 @@ export class CourseService {
     getAssignments(courseId: number): Observable<Assignment[]> {
         const url = `${this.baseUrl}/get-assignments/${courseId}/`;
         return this.httpClient.get<Assignment[]>(url).pipe();
+    }
+
+    removeStudent(formBody: any){
+        const url = `${this.baseUrl}/remove-student`;
+        return this.httpClient.post(url, formBody, {withCredentials: true});
+    }
+
+    getStudents(courseId: number): Observable<Student[]> {
+        const url = `${this.baseUrl}/get-students/${courseId}/`;
+        return this.httpClient.get<Student[]>(url).pipe();
     }
 
     constructor(private httpClient: HttpClient) { }

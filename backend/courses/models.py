@@ -26,15 +26,15 @@ class Assignment(models.Model):
    dueDate = CustomDateTimeField(auto_now_add=True, blank=True)
    courseId = models.ForeignKey(Course, on_delete = models.CASCADE, related_name="course")
 
-
 class Question(models.Model):
    content = models.TextField(default = "")
    assignmentId = models.ForeignKey(Assignment, on_delete = models.CASCADE, related_name="assignment")
    studentId = models.ForeignKey(User, on_delete = models.CASCADE, related_name="student", null = True)
+   answeredStatus = models.BooleanField(default = False)
 
 class Answer(models.Model):
    content = models.TextField(default = "")
-   answeredStatus = models.BooleanField(default = False)
+   # answeredStatus = models.BooleanField(default = False)
    dateSubmitted = CustomDateTimeField(default = now, blank=True)
    taId = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "ta", null = True)
    questionId = models.ForeignKey(Question, on_delete = models.CASCADE, related_name="question")

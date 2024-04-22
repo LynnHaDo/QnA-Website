@@ -1,0 +1,62 @@
+<div class="course-section">
+    <h1 class="mb-4">All submissions</h1>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Question</th>
+          <td>Answered</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let question of questions">
+          <td>
+            <a routerLink = "questions/{{question.id}}">
+                {{ question.content }}
+            </a>
+          </td>
+          <td>
+            <label class="checkbox-control">
+                <input type="checkbox" (checked) = "question.answeredStatus"/>
+            </label>
+          </td>
+          <td>
+            <button
+              type="button"
+              class="btn btn-danger"
+              (click)="openRemoveSubmissionModal(question)"
+            >
+              Remove
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+  <div
+    class="modal"
+    id="confirmModal"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="confirmModalLabel"
+    aria-hidden="true"
+    [ngStyle]="{ display: displayCF }"
+  >
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+          Are you sure that you want to delete the submission of {{ studentSubmissionEmail }}?
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeModal()">
+              Close
+          </button>
+          <button type="button" class="btn btn-danger" (click)="removeQuestion()">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  

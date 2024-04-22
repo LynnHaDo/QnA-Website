@@ -48,6 +48,7 @@ export class LoginComponent implements OnInit {
                 this.authService.accessToken = res.token;
                 RegisterService.authEmitter.emit(true);
                 RegisterService.isAuthenticated.next(true);
+                sessionStorage.setItem("userLoggedIn", "true");
                 this.router.navigate(['']);
             },
             (error: any) => {

@@ -1,1 +1,51 @@
+<div class="course-section">
+  <h1 class="mb-4">All students</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Email</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let student of students">
+        <th scope="row">{{ student.email }}</th>
+        <td>
+          <button
+            type="button"
+            class="btn btn-danger"
+            (click)="openRemoveStudentModal(student)"
+          >
+            Remove
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
+<div
+  class="modal"
+  id="confirmModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="confirmModalLabel"
+  aria-hidden="true"
+  [ngStyle]="{ display: displayCF }"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Are you sure that you want to delete student {{ studentToBeDeleted }}?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">
+            Close
+        </button>
+        <button type="button" class="btn btn-danger" (click)="removeStudent()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

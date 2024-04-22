@@ -2,10 +2,10 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import exceptions
 
-from users.models import InstructorUserPermissions
+from users.models import InstructorUserPermissions, User
 
 from .serializers import AnswerSerializer, CourseSerializer, QuestionSerializer, AssignmentSerializer
-from .models import Course, Assignment
+from .models import Course, Assignment, Question
 from users.serializers import UserSerializer
 
 """
@@ -62,6 +62,19 @@ class GetCoursesAPIView(APIView):
 
         return response
 
+class GetAssignmentAPIView(APIView):
+    def get(self, request, id):
+        asmId = id
+
+        asm = Assignment.objects.filter(id = asmId).first()
+        response = Response()
+
+        if asm is not None:
+            asmSerializer = AssignmentSerializer(asm)
+            response.data = asmSerializer.data
+        
+        return response
+
 class GetAssignmentsAPIView(APIView):
     def get(self, request, id):
         courseId = id
@@ -77,6 +90,19 @@ class GetAssignmentsAPIView(APIView):
                 response.data.append(asmSerializer.data)
         
         return response
+
+class GetStudentAPIView(APIView):
+    def get(self, request, id):
+        student = User.objects.filter(id = id).first()
+
+        if student is not None:
+            return Response({
+                "id": student.id,
+                "name": student.name,
+                "email": student.email
+            })
+        else:
+            raise exceptions.NotFound("Student not found")
 
 class GetStudentsAPIView(APIView):
     def get(self, request, id):
@@ -98,13 +124,82 @@ class GetStudentsAPIView(APIView):
         
         return response
 
+"""
+Remove a student from course
+"""
+class RemoveStudentAPIView(APIView):
+    def post(self, request):
+        course_id = request.data['courseId']
+        student_id = request.data['studentId']
+
+        crs = Course.objects.filter(id = course_id).first()
+
+        if crs is None:
+            raise exceptions.NotFound("Course id invalid")
+        
+        student = crs.students.filter(id = student_id).first()
+
+        if student is None:
+            raise exceptions.NotFound("Student id invalid")
+        
+        response = Response()
+        crs.students.remove(student)
+        response.data = {
+            "message": "success"
+        }
+
+        return response
+
 
 """
 Get questions data 
 """
 class GetQuestionsAPIView(APIView):
-    def get(self, request):
-        return Response(QuestionSerializer(request.question).data)
+    def get(self, request, assignment_id):
+        asm = Assignment.objects.filter(id = assignment_id).first()
+        if asm is None:
+            raise exceptions.NotFound("Assignment id invalid")
+
+        questions = Question.objects.filter(assignmentId = assignment_id)
+        response = Response()
+        response.data = []
+
+        if questions is not None:
+            for q in questions:
+                qSerializer = QuestionSerializer(q)
+                response.data.append(qSerializer.data)
+        
+        return response
+
+"""
+Get question data 
+"""
+class GetQuestionAPIView(APIView):
+    def get(self, request, q_id):
+        q = Question.objects.filter(id = q_id).first()
+        if q is None:
+            raise exceptions.NotFound("Question id invalid")
+        
+        response = Response()
+        qSerializer = QuestionSerializer(q)
+        response.data = qSerializer.data
+        
+        return response
+
+class RemoveQuestionAPIView(APIView):
+    def post(self, request):
+        question_id = request.data['questionId']
+
+        question = Question.objects.filter(id = question_id).first()
+
+        if question is None:
+            raise exceptions.NotFound("Question id invalid")
+        
+        question.delete()
+
+        return Response({
+            "message": "success"
+        })
 
 """
 Post answer to question

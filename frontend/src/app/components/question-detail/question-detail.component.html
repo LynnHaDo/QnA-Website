@@ -1,0 +1,13 @@
+<div class="course-section">
+    <h1 class="mb-4">Question</h1>
+    <h4>{{ question.content }}</h4>
+    <p>By: {{ student.email }}</p>
+
+    <h4>Answer</h4>
+
+    <div class="NgxEditor__Wrapper">
+        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+        <ngx-editor [editor]="editor" [placeholder]="'Type here...'"></ngx-editor>
+      </div>
+
+  </div>

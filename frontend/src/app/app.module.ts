@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { NgxEditorComponent, NgxEditorModule } from 'ngx-editor';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,7 +30,10 @@ import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';
 
-import googleAuthJson from "./environment/google_oauth_secret.json"
+import googleAuthJson from "./environment/google_oauth_secret.json";
+import { AssignmentSubmissionsComponent } from './components/assignment-submissions/assignment-submissions.component';
+import { GradingAssignmentComponent } from './components/grading-assignment/grading-assignment.component';
+import { QuestionDetailComponent } from './components/question-detail/question-detail.component';
 
 @NgModule({
   declarations: [
@@ -48,11 +52,15 @@ import googleAuthJson from "./environment/google_oauth_secret.json"
     AssignmentDetailComponent,
     ForgotPasswordComponent,
     ResetComponent,
+    AssignmentSubmissionsComponent,
+    GradingAssignmentComponent,
+    QuestionDetailComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxEditorModule,
     NgbModule,
     ReactiveFormsModule,
     SocialLoginModule,
