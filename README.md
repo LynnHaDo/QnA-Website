@@ -75,6 +75,7 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 - [x] Set up Django APIs to send answers to questions
 - [x] Render questions, assignments, roster 
 - [x] Integrate text editor to answer submission
+- [x] Render answer on the front-end, post answer to database 
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
 

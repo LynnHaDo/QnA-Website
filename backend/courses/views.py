@@ -4,8 +4,10 @@ from rest_framework import exceptions
 
 from users.models import InstructorUserPermissions, User
 
+import datetime
+
 from .serializers import AnswerSerializer, CourseSerializer, QuestionSerializer, AssignmentSerializer
-from .models import Course, Assignment, Question
+from .models import Answer, Course, Assignment, Question
 from users.serializers import UserSerializer
 
 """
@@ -202,11 +204,53 @@ class RemoveQuestionAPIView(APIView):
         })
 
 """
+Get answer
+"""
+class GetAnswerAPIView(APIView):
+    def get(self, request, question_id):
+        answer = Answer.objects.filter(questionId = question_id).first()
+        response = Response()
+
+        if answer is None:
+            response.status_code = 404
+            response.data = {
+                "message": "No answer found for this question"
+            }
+            return response
+        
+        response.data = AnswerSerializer(answer).data
+        return response
+
+"""
 Post answer to question
 """
 class PostAnswerAPIView(APIView):
     def post(self, request):
-        serializer = AnswerSerializer(data = request.data)
-        serializer.is_valid(raise_exception=True) # validation
-        serializer.save()
-        return Response(serializer.data)
+        # Check if question has already been answered
+        question_id = request.data['questionId']
+
+        question = Question.objects.filter(id = question_id).first()
+
+        if question is None:
+            raise exceptions.NotFound("Question id invalid")
+        
+        if question.answeredStatus == False:
+            serializer = AnswerSerializer(data = request.data)
+            serializer.is_valid(raise_exception=True) # validation
+            serializer.save()
+            question.answeredStatus = True
+            question.save()      
+        # Modify the answer otherwise
+        else:
+            answer = Answer.objects.filter(questionId = question_id).first()
+            ta = User.objects.filter(id = request.data['taId']).first()
+            if ta is None:
+                raise exceptions.NotFound("TA id invalid")
+            setattr(answer, 'content', request.data['content'])
+            setattr(answer, 'taId', ta)
+            setattr(answer, "dateSubmitted", datetime.datetime.now().isoformat())
+            answer.save()
+        
+        return Response({
+                "message": "success"
+        })

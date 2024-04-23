@@ -28,7 +28,7 @@ class AssignmentSerializer(ModelSerializer):
 class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question 
-        fields = ['id', 'content', 'assignmentId', 'studentId']
+        fields = ['id', 'content', 'assignmentId', 'studentId', 'answeredStatus']
     
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data) # create user with data (other than password)

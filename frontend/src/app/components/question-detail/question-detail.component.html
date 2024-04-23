@@ -1,13 +1,23 @@
 <div class="course-section">
-    <h1 class="mb-4">Question</h1>
-    <h4>{{ question.content }}</h4>
-    <p>By: {{ student.email }}</p>
+  <h1 class="mb-4">Question</h1>
+  <p>{{ question.content }}</p>
+  <h4>By: {{ student.email }}</h4>
 
-    <h4>Answer</h4>
+  <h4 class="mt-1">Answer</h4>
+  <div [innerHTML]="renderedHtmlContent"></div>
 
+  <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
     <div class="NgxEditor__Wrapper">
-        <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-        <ngx-editor [editor]="editor" [placeholder]="'Type here...'"></ngx-editor>
-      </div>
-
-  </div>
+      <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+      <ngx-editor
+        [editor]="editor"
+        [(ngModel)]="html"
+        [placeholder]="'Type here...'"
+        formControlName="editorContent"
+      ></ngx-editor>
+    </div>
+    <button type="submit" class="fill-btn mt-3" [disabled]="ansForm.invalid">
+      Submit
+    </button>
+  </form>
+</div>

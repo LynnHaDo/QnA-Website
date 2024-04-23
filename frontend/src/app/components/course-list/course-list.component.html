@@ -1,4 +1,4 @@
-<div *ngIf = "instructorCourseList!.length > 0 || taCourseList!.length > 0" class = "course-section mb-5">
+<div *ngIf = "instructorCourseList!.length > 0" class = "course-section mb-5">
     <h1 class = "mb-4">Instructor courses</h1>
 
     <div class = "container">
@@ -14,7 +14,24 @@
             </div>
         </div>
     </div>
+</div>
 
+<div *ngIf = "taCourseList!.length > 0" class = "course-section mb-5">
+    <h1 class = "mb-4">TA courses</h1>
+
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-lg-3 col-md-4 course crs-instructor mb-3" *ngFor = "let course of taCourseList">
+                <a routerLink = "/courses/{{ course.id }}">
+                    <div class = "course-text">
+                        <h4>{{ course.code }}</h4>
+                        <p>{{ course.name }}</p>
+                        <span>{{ course.semester }}</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 
 <div *ngIf = "studentCourseList!.length > 0" class = "course-section">
