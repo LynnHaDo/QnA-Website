@@ -32,9 +32,16 @@ class Question(models.Model):
    studentId = models.ForeignKey(User, on_delete = models.CASCADE, related_name="student", null = True)
    answeredStatus = models.BooleanField(default = False)
 
+class Cluster(models.Model):
+   asmId = models.ForeignKey(Assignment, on_delete = models.CASCADE, related_name="asmId")
+   answerers = models.ManyToManyField(User, related_name = "answerers")
+   questions = models.ManyToManyField(Question, related_name = "questions")
+
 class Answer(models.Model):
    content = models.TextField(default = "")
    # answeredStatus = models.BooleanField(default = False)
    dateSubmitted = CustomDateTimeField(default = now, blank=True)
    taId = models.ForeignKey(User, on_delete = models.CASCADE, related_name = "ta", null = True)
    questionId = models.ForeignKey(Question, on_delete = models.CASCADE, related_name="question")
+
+

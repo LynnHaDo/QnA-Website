@@ -6,8 +6,8 @@ from users.models import InstructorUserPermissions, User
 
 import datetime
 
-from .serializers import AnswerSerializer, CourseSerializer, QuestionSerializer, AssignmentSerializer
-from .models import Answer, Course, Assignment, Question
+from .serializers import AnswerSerializer, ClusterSerializer, CourseSerializer, QuestionSerializer, AssignmentSerializer
+from .models import Answer, Cluster, Course, Assignment, Question
 from users.serializers import UserSerializer
 
 """
@@ -254,3 +254,23 @@ class PostAnswerAPIView(APIView):
         return Response({
                 "message": "success"
         })
+
+"""
+Get all clusters for a given assignment
+"""
+class GetClustersAPIView(APIView):
+    def get(self, request, assignment_id):
+        asm = Assignment.objects.filter(id = assignment_id).first()
+        if asm is None:
+            raise exceptions.NotFound("Assignment id invalid")
+
+        clusters = Cluster.objects.filter(asmId = assignment_id)
+        response = Response()
+        response.data = []
+
+        if clusters is not None:
+            for c in clusters:
+                cSerializer = ClusterSerializer(c)
+                response.data.append(cSerializer.data)
+        
+        return response

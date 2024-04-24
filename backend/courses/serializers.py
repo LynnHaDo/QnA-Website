@@ -1,5 +1,5 @@
 from rest_framework.serializers import ModelSerializer
-from courses.models import Course, Question, Answer, Assignment
+from courses.models import Cluster, Course, Question, Answer, Assignment
 
 """
 Serialize course
@@ -39,6 +39,16 @@ class AnswerSerializer(ModelSerializer):
     class Meta:
         model = Answer
         fields = ['id', 'content', 'taId', 'questionId']
+    
+    def create(self, validated_data):
+        instance = self.Meta.model(**validated_data) # create user with data (other than password)
+        instance.save()
+        return instance
+    
+class ClusterSerializer(ModelSerializer):
+    class Meta:
+        model = Cluster
+        fields = ['id', 'answerers', 'asmId', 'questions']
     
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data) # create user with data (other than password)

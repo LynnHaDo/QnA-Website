@@ -23,6 +23,9 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
     html = '';
     renderedHtmlContent: SafeHtml = "";
 
+    successfullySubmitted: boolean = false;
+    failToSubmit: boolean = false;
+
     ansForm: FormGroup = this.formBuilder.group({
         editorContent: new FormControl("", Validators.required)
     })
@@ -82,11 +85,16 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
                     "taId": taId,
                     "questionId": this.question.id
                 }
-                this.questionService.postAnswer(body).subscribe();
-                this.renderAnswer();
+                this.questionService.postAnswer(body).subscribe(
+                    (data) => {
+                        this.renderQuestion();
+                        this.successfullySubmitted = true;
+                    }
+                );
+                
             },
             error: (err) => {
-                console.log("Unauthenticated");
+                this.failToSubmit = true;
             }
         })
     }

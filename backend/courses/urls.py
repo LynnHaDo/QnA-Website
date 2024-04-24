@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import CreateCourseAPIView, GetAnswerAPIView, GetAssignmentAPIView, GetAssignmentsAPIView, GetCoursesAPIView, GetQuestionAPIView, GetQuestionsAPIView, GetStudentAPIView, GetStudentsAPIView, PostAnswerAPIView, GetCourseAPIView, RemoveQuestionAPIView, RemoveStudentAPIView
+from .views import CreateCourseAPIView, GetAnswerAPIView, GetAssignmentAPIView, GetAssignmentsAPIView, GetClustersAPIView, GetCoursesAPIView, GetQuestionAPIView, GetQuestionsAPIView, GetStudentAPIView, GetStudentsAPIView, PostAnswerAPIView, GetCourseAPIView, RemoveQuestionAPIView, RemoveStudentAPIView
 
 urlpatterns = [
     path("create-course", CreateCourseAPIView.as_view()),
@@ -15,5 +15,6 @@ urlpatterns = [
     path("get-students/<int:id>/", GetStudentsAPIView.as_view()),
     path("remove-student", RemoveStudentAPIView.as_view()),
     path("get-answer/<int:question_id>", GetAnswerAPIView.as_view()),
-    path("send-answer", PostAnswerAPIView.as_view())
+    path("send-answer", PostAnswerAPIView.as_view()),
+    path("get-clusters/<int:assignment_id>", GetClustersAPIView.as_view())
 ]

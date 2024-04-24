@@ -20,4 +20,7 @@
       Submit
     </button>
   </form>
+
+  <div class = "alert alert-success" *ngIf = "successfullySubmitted">Answer saved!</div>
+  <div class = "alert alert-error" *ngIf = "failToSubmit">Error occured.</div>
 </div>

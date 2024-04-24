@@ -40,9 +40,10 @@ export class CourseRosterComponent implements OnInit {
             "courseId": courseId,
             "studentId": this.studentToBeDeletedId
         }
-        this.courseService.removeStudent(body).subscribe();
+        this.courseService.removeStudent(body).subscribe(() => {
+            this.renderRoster();
+        });
         this.displayCF = "none";
-        this.renderRoster();
     }
 
     closeModal(){

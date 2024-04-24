@@ -11,15 +11,20 @@ def run(*args):
             reader = csv.reader(csvfile)
             next(reader, None)
             for row in reader:
+                course = Course.objects.filter(id = row[1]).first()
+                if (course is None):
+                    print("Course id invalid")
+                    return
                 if User.objects.filter(email = row[0]).first() is None:
                     user = User.objects.create(
                         email = row[0],
                         role = User.STUDENT
                     )
                     user.save()
-                    course = Course.objects.filter(id = row[1]).first()
-                    if (course is not None):
-                        course.students.add(user)
+                else: 
+                    user = User.objects.filter(email = row[0]).first()
+                course.students.add(user)
+                    
         print("User data added to course " + course.code + " (" + course.semester + ")")
     else:
         print("Invalid input. Please pass in a csv file and a valid course id number")
