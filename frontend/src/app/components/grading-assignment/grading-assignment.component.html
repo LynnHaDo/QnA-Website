@@ -1,1 +1,17 @@
-<p>grading-assignment works!</p>
+<div class="course-section">
+  <h1 class="mb-4">All question groups</h1>
+
+  <div class="cluster-wrapper">
+    <div *ngFor="let cluster of clusters" class="card mb-3">
+      <div class="card-header">
+        <h5 class="mb-0">Group {{ cluster.id }}</h5>
+      </div>
+
+      <div class="card-body">
+        <div *ngFor="let question of cluster.questions">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -8,7 +8,7 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class RegisterService {
-
+    
     static authEmitter = new EventEmitter<boolean>();
     static isAuthenticated = new BehaviorSubject<boolean>(false);
 

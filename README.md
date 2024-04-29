@@ -110,5 +110,55 @@ See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full
 
 ### Installation
 
+1. Clone the repo
+2. Navigate to `frontend` folder
+3. Before `npm install` to install packages, make sure the correct version of Angular is installed.
+4. Run on server
+
+```
+ng s
+```
+
+5. Navigate to `backend` folder
+6. Run on server
+
+```
+python3 manage.py runserver
+```
+
+#### Run Django scripts
+
+*Refer to `backend/samples` for sample `.csv` files*
+
+- Import course
+
+```
+python3 manage.py runscript import_course --script-args [PATH/TO/COURSE.csv FILE]
+```
+
+- Import assignments
+
+```
+python3 manage.py runscript import_assignment --script-args [PATH/TO/ASSIGNMENT.csv FILE]
+```
+
+- Import questions
+
+```
+python3 manage.py runscript import_questions --script-args [PATH/TO/QUESTIONS.csv FILE] [ASSIGNMENT_ID]
+```
+
+- Delete questions of an assignment
+
+```
+python3 manage.py runscript delete_questions --script-args [ASSIGNMENT_ID]
+```
+
+- Generate clusters for all questions in an assignment
+
+```
+python3 manage.py runscript create_clusters --script-args [ASSIGNMENT_ID]
+```
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 

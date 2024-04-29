@@ -297,6 +297,21 @@ aside.menu-sidebar {
     background-color: var(--dark-green);
 }
 
+.progressbar {
+    background-color: var(--dark-gray);
+    border-radius: 5px;
+    /* (height of inner div) / 2 + padding */
+    padding: 1px;
+}
+  
+.progressbar>div {
+    background-color: var(--light-purple);
+    /* Adjust with JavaScript */
+    height: 10px;
+    border-radius: 7px;
+    width: 0;
+}
+
 /**************
 Menu
 **************/

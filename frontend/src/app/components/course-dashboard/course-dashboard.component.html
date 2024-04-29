@@ -25,8 +25,12 @@
         <tbody>
           <tr *ngFor = "let assignment of activeAssignments">
             <th scope="row"><a routerLink = "assignments/{{ assignment.id }}">{{ assignment.name }}</a></th>
-            <td></td>
-            <td></td>
+            <td>{{ assignment.numSubmissions }}</td>
+            <td style = "padding-top: 13px">
+                <div class = "progressbar">
+                    <div [ngStyle]="{'width': getWidth(assignment) }"></div>
+                </div>
+            </td>
             <td>
                 <label class="checkbox-control">
                     <input type="checkbox" (checked) = "assignment.publishedStatus"/>

@@ -16,7 +16,9 @@ def run(*args):
                     name = row[0],
                     publishedStatus = row[1],
                     dueDate = row[2],
-                    courseId = Course.objects.filter(id = row[3]).first()
+                    courseId = Course.objects.filter(id = row[3]).first(),
+                    numSubmissions = 0,
+                    percentAnswered = 0
                 )
                 item.save()
         print("Assignment data added")

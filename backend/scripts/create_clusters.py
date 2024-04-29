@@ -11,21 +11,15 @@ Code provided by Prof. Malte Schwarzkopf
 def parse_questions(questions, assignment):
     model = SentenceTransformer('aiknowyou/all-mpnet-base-questions-clustering-en')
     sentences = []
-    for q in questions:
+    questions = list(enumerate(questions))
+
+    for i, q in questions:
         content = getattr(q, 'content')
         sentences.append(content)
 
     embeddings = model.encode(sentences) # create embeddings
 
-    # Get the course this assignment belongs to
-    crs = getattr(assignment, 'courseId')
-
-    # Get number of TAs in the class
-    tas_count = getattr(crs, 'tas').count()
-
-    n_clstr = int(len(sentences)/tas_count)
-
-    clusters = cluster.KMeans(n_clusters=n_clstr).fit_predict(embeddings)
+    clusters = cluster.KMeans(n_clusters=10).fit_predict(embeddings)
 
     clustered_data = {}
     
@@ -33,18 +27,19 @@ def parse_questions(questions, assignment):
         if not c in clustered_data:
             clustered_data[c] = []
             clstr = Cluster.objects.create(
+                id = c+1,
                 asmId = assignment
             )
             clstr.save() 
         else:
             clstr = Cluster.objects.filter(id = c+1).first()
-        clustered_data[c].append(i)
-        q = questions.filter(id = i+1).first()
-        clstr.questions.add(q)
 
-    print(clusters)
-    print(clustered_data)
-    print('Successfully created {} clusters'.format(n_clstr))
+        clustered_data[c].append(i)
+        q = questions[i][1]
+        clstr.questions.add(q)
+        clstr.save() 
+
+    print('Successfully created {} clusters'.format(10))
 
 """
 Params:

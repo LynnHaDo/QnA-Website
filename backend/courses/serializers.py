@@ -18,7 +18,7 @@ class CourseSerializer(ModelSerializer):
 class AssignmentSerializer(ModelSerializer):
     class Meta:
         model = Assignment 
-        fields = ['id', 'name', 'publishedStatus', 'dueDate', 'courseId']
+        fields = ['id', 'name', 'publishedStatus', 'dueDate', 'courseId', 'numSubmissions', 'numAnswered']
 
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data)
@@ -51,7 +51,7 @@ class ClusterSerializer(ModelSerializer):
         fields = ['id', 'answerers', 'asmId', 'questions']
     
     def create(self, validated_data):
-        instance = self.Meta.model(**validated_data) # create user with data (other than password)
+        instance = self.Meta.model(**validated_data) 
         instance.save()
         return instance
 

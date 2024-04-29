@@ -17,9 +17,7 @@ export class AssignmentDetailComponent {
         private assignmentService: AssignmentService){}
 
     ngOnInit(): void {
-    this.route.paramMap.subscribe(() => {
         this.renderAssignment();
-    })
     }
 
     renderMenu($event: any){

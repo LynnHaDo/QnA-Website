@@ -234,12 +234,19 @@ class PostAnswerAPIView(APIView):
         if question is None:
             raise exceptions.NotFound("Question id invalid")
         
+        asm = question.assignmentId
+        
+        if asm is None:
+            raise exceptions.NotFound("Assignment not found")
+
         if question.answeredStatus == False:
             serializer = AnswerSerializer(data = request.data)
             serializer.is_valid(raise_exception=True) # validation
             serializer.save()
             question.answeredStatus = True
             question.save()      
+            asm.numAnswered += 1
+            asm.save()
         # Modify the answer otherwise
         else:
             answer = Answer.objects.filter(questionId = question_id).first()
@@ -270,7 +277,15 @@ class GetClustersAPIView(APIView):
 
         if clusters is not None:
             for c in clusters:
+                questions = []
+                for q in c.questions.all():
+                    questions.append({
+                        "id": q.id,
+                        "content": q.content
+                    })
                 cSerializer = ClusterSerializer(c)
-                response.data.append(cSerializer.data)
+                setattr(cSerializer, 'questions', questions)
+                response.data.append(questions)
         
         return response
+

@@ -25,6 +25,8 @@ class Assignment(models.Model):
    publishedStatus = models.BooleanField()
    dueDate = CustomDateTimeField(auto_now_add=True, blank=True)
    courseId = models.ForeignKey(Course, on_delete = models.CASCADE, related_name="course")
+   numSubmissions = models.IntegerField(default=0)
+   numAnswered = models.IntegerField(default=0)
 
 class Question(models.Model):
    content = models.TextField(default = "")

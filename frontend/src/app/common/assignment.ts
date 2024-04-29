@@ -4,4 +4,6 @@ export class Assignment {
     publishedStatus!: boolean; // published or not
     courseId!: number;
     dueDate!: Date;
+    numSubmissions!: number;
+    numAnswered!: number;
 }

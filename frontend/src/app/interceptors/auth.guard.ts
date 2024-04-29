@@ -11,11 +11,12 @@ export const authGuard: CanActivateFn = (
   route: ActivatedRouteSnapshot,
   state: RouterStateSnapshot
 ) => {
-/* 
-  let loggedInStatus = sessionStorage.getItem('userLoggedIn');
-  if (loggedInStatus == null) {
-    return inject(Router).createUrlTree(['/log-in']);
-  } */
+  if (sessionStorage.getItem("userLoggedIn") == null){
+    return inject(Router).createUrlTree(['/log-in'])
+  }
+  else {
+    
+  }
   let isAuthenticated = false;
   RegisterService.isAuthenticated.subscribe((val) => (isAuthenticated = val));
   return isAuthenticated ? true : inject(Router).createUrlTree(['/log-in']);

@@ -5,6 +5,8 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Question } from '../common/question';
 import { Student } from '../common/student';
+import { User } from '../common/user';
+import { Cluster } from '../common/cluster';
 
 @Injectable({
   providedIn: 'root'
@@ -33,5 +35,22 @@ export class AssignmentService {
         const url = `${this.baseUrl}/get-student/${id}`;
         return this.httpClient.get<Student>(url).pipe();
     }
+
+    generateCluster(formBody: any) {
+
+    }
     
+    getClusters(id: number): Observable<GetResponseCluster> {
+        const url = `${this.baseUrl}/get-clusters/${id}`;
+        return this.httpClient.get<GetResponseCluster>(url).pipe()
+    }
+}
+
+interface GetResponseCluster {
+    any: [
+        {
+            "id": number,
+            "content": string
+        }
+    ]
 }

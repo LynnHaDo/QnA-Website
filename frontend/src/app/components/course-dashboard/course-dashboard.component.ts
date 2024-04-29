@@ -31,4 +31,9 @@ export class CourseDashboardComponent {
         })
     }
 
+    getWidth(assignment: Assignment){
+        let val = assignment.numAnswered/assignment.numSubmissions * 100
+        return val.toString() + "%";
+    }
+
 }
