@@ -13,7 +13,8 @@ export class RegisterService {
     static isAuthenticated = new BehaviorSubject<boolean>(false);
 
     private baseUrl = env.registerAPI;
-    accessToken = ''
+    accessToken = '';
+    userId!: number;
 
   constructor(private httpClient: HttpClient) { }
 

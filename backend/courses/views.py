@@ -240,13 +240,24 @@ class PostAnswerAPIView(APIView):
             raise exceptions.NotFound("Assignment not found")
 
         if question.answeredStatus == False:
-            serializer = AnswerSerializer(data = request.data)
-            serializer.is_valid(raise_exception=True) # validation
-            serializer.save()
+            # Check to see if an answer object has already been created for this question
+            ans = Answer.objects.filter(questionId = question).first()
+            ta = User.objects.filter(id = request.data['taId']).first()
+            if ans is None:
+                serializer = AnswerSerializer(data = request.data)
+                serializer.is_valid(raise_exception=True) # validation
+                serializer.save()
+            else:
+                setattr(ans, 'content', request.data['content'])
+                setattr(ans, 'taId', ta)
+                setattr(ans, "dateSubmitted", datetime.datetime.now().isoformat())
+                ans.save()
             question.answeredStatus = True
+            question.claimedStatus = True
             question.save()      
             asm.numAnswered += 1
             asm.save()
+
         # Modify the answer otherwise
         else:
             answer = Answer.objects.filter(questionId = question_id).first()
@@ -271,6 +282,27 @@ class GetClustersAPIView(APIView):
         if asm is None:
             raise exceptions.NotFound("Assignment id invalid")
 
+        clusters = Cluster.objects.filter(asmId = assignment_id).all()
+        response = Response()
+        response.data = []
+
+        if clusters is not None:
+            for c in clusters:
+                cSerializer = ClusterSerializer(c)
+                response.data.append(cSerializer.data)
+        
+        return response
+
+"""
+Get all clusters (just the content: id, and questions' content) for a given assignment
+Will exclude questions that have been claimed/answered
+"""
+class GetClustersContentAPIView(APIView):
+    def get(self, request, assignment_id):
+        asm = Assignment.objects.filter(id = assignment_id).first()
+        if asm is None:
+            raise exceptions.NotFound("Assignment id invalid")
+
         clusters = Cluster.objects.filter(asmId = assignment_id)
         response = Response()
         response.data = []
@@ -279,13 +311,79 @@ class GetClustersAPIView(APIView):
             for c in clusters:
                 questions = []
                 for q in c.questions.all():
+                    # Filter out questions that have been answered/claimed
+                    if q.answeredStatus == True or q.claimedStatus == True:
+                        continue
+
                     questions.append({
                         "id": q.id,
                         "content": q.content
                     })
-                cSerializer = ClusterSerializer(c)
-                setattr(cSerializer, 'questions', questions)
                 response.data.append(questions)
         
         return response
+
+"""
+Post a set of questions as being claimed
+"""
+class PostClaimedQuestionsAPIView(APIView):
+    def post(self, request):
+        assignment_id = request.data["assignment_id"]
+        questions_claimed = request.data["claimedQuestions"]
+        ta_id = request.data["ta_id"]
+
+        asm = Assignment.objects.filter(id = assignment_id).first()
+
+        if asm is None:
+            raise exceptions.NotFound("Assignment id invalid")
+        
+        questions = Question.objects.filter(assignmentId = assignment_id, id__in=questions_claimed).all()
+
+        if questions is None:
+            raise exceptions.NotFound("These questions are not found in this assignment")
+        
+        questions.update(claimedStatus = True)
+        
+        for q in questions:
+            ans = Answer.objects.filter(questionId = q).first()
+            if ans is None:
+                Answer.objects.create(
+                    questionId = Question.objects.filter(id = q.id).first(),
+                    taId = User.objects.filter(id = ta_id).first()
+                )
+            else:
+                ans.taId = User.objects.filter(id = ta_id).first() # Update the answerer to be the TA
+                ans.save()
+
+        return Response({
+                "message": "success"
+        })
+
+"""
+Get all questions claimed/answered by a TA
+"""
+class GetQuestionsByTAIdAPIView(APIView):
+    def get(self, request, ta_id):
+        ta = User.objects.filter(id = ta_id).first()
+        if ta is None:
+            raise exceptions.NotFound("TA id invalid")
+
+        answers = Answer.objects.filter(taId = ta).all()
+        
+        response = Response()
+        response.data = []
+
+        if answers is None:
+            return response # Empty response in this case
+        
+        for ans in answers:
+            q = ans.questionId
+            qSerializer = QuestionSerializer(q)
+            response.data.append(qSerializer.data)
+        
+        return response
+
+        
+        
+
 

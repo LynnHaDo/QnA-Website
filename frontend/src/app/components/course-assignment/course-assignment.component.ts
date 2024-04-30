@@ -30,6 +30,12 @@ export class CourseAssignmentComponent {
                 this.assignments = data
             })
         }
+
+        getWidth(assignment: Assignment){
+            let val = assignment.numAnswered/assignment.numSubmissions * 100
+            return val.toString() + "%";
+        }
+    
     
 }
 

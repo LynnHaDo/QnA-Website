@@ -35,22 +35,31 @@ export class AssignmentService {
         const url = `${this.baseUrl}/get-student/${id}`;
         return this.httpClient.get<Student>(url).pipe();
     }
-
-    generateCluster(formBody: any) {
-
-    }
     
-    getClusters(id: number): Observable<GetResponseCluster> {
+    getClusters(id: number): Observable<Cluster[]> {
         const url = `${this.baseUrl}/get-clusters/${id}`;
-        return this.httpClient.get<GetResponseCluster>(url).pipe()
+        return this.httpClient.get<Cluster[]>(url).pipe()
+    }
+
+    getClustersContent(id: number): Observable<GetResponseClusters> {
+        const url = `${this.baseUrl}/get-clusters-content/${id}`;
+        return this.httpClient.get<GetResponseClusters>(url).pipe()
+    }
+
+    postClaimedQuestions(formBody: any){
+        const url = `${this.baseUrl}/post-claimed-questions`;
+        return this.httpClient.post(url, formBody, {withCredentials: true});
+    }
+
+    getClaimedQuestions(taId: number){
+        const url = `${this.baseUrl}/get-questions-by-answerer/${taId}`;
+        return this.httpClient.get<Question[]>(url).pipe();
     }
 }
 
-interface GetResponseCluster {
-    any: [
-        {
-            "id": number,
-            "content": string
-        }
-    ]
+interface ClusterContent {
+    "id": number,
+    "content": string
 }
+
+interface GetResponseClusters extends Array<ClusterContent[]>{}

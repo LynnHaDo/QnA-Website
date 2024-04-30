@@ -28,10 +28,10 @@ class AssignmentSerializer(ModelSerializer):
 class QuestionSerializer(ModelSerializer):
     class Meta:
         model = Question 
-        fields = ['id', 'content', 'assignmentId', 'studentId', 'answeredStatus']
+        fields = ['id', 'content', 'assignmentId', 'studentId', 'answeredStatus', 'claimedStatus']
     
     def create(self, validated_data):
-        instance = self.Meta.model(**validated_data) # create user with data (other than password)
+        instance = self.Meta.model(**validated_data) 
         instance.save()
         return instance
 
@@ -41,14 +41,14 @@ class AnswerSerializer(ModelSerializer):
         fields = ['id', 'content', 'taId', 'questionId']
     
     def create(self, validated_data):
-        instance = self.Meta.model(**validated_data) # create user with data (other than password)
+        instance = self.Meta.model(**validated_data) 
         instance.save()
         return instance
     
 class ClusterSerializer(ModelSerializer):
     class Meta:
         model = Cluster
-        fields = ['id', 'answerers', 'asmId', 'questions']
+        fields = ['id', 'asmId', 'questions']
     
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data) 

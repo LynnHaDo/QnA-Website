@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Assignment } from 'src/app/common/assignment';
 import { AssignmentService } from 'src/app/services/assignment.service';
 import { CourseService } from 'src/app/services/course.service';
+import { MiscService } from 'src/app/services/misc.service';
 
 @Component({
   selector: 'app-assignment-detail',
@@ -11,10 +12,10 @@ import { CourseService } from 'src/app/services/course.service';
 })
 export class AssignmentDetailComponent {
     assignment!: Assignment;
-    miscService: any;
 
     constructor(private route: ActivatedRoute,
-        private assignmentService: AssignmentService){}
+        private assignmentService: AssignmentService,
+        private miscService: MiscService){}
 
     ngOnInit(): void {
         this.renderAssignment();

@@ -80,7 +80,7 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 - [x] Generate clusters. Save those to the database
 - [x] Clean question data (Remove n/a's) before saving it into database
 - [x] Render clusters to the frontend. 
-- [ ] Add option to select clusters/questions in the clusters. Save info to database.
+- [x] Add option to select clusters/questions in the clusters. Save info to database.
  
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).

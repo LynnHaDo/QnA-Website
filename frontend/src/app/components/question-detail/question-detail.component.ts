@@ -76,13 +76,11 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
     }
 
     onSubmit(){
-        let taId;
         this.registerService.user().subscribe({
             next: (res: any) => {
-                taId = res['id'];
                 let body = {
                     "content": this.html,
-                    "taId": taId,
+                    "taId": this.registerService.userId,
                     "questionId": this.question.id
                 }
                 this.questionService.postAnswer(body).subscribe(

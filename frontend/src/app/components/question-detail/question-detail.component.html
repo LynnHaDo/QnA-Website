@@ -1,9 +1,9 @@
 <div class="course-section">
-  <h1 class="mb-4">Question</h1>
-  <p>{{ question.content }}</p>
-  <h4>By: {{ student.email }}</h4>
+  <h1 class="mb-3">Question</h1>
+  <p style = "color: var(--light-purple)">{{ question.content }}</p>
+  <em>By: {{ student.email }}</em>
 
-  <h4 class="mt-1">Answer</h4>
+  <h1 class="mt-4 mb-4">Answer</h1>
   <div [innerHTML]="renderedHtmlContent"></div>
 
   <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
@@ -21,6 +21,6 @@
     </button>
   </form>
 
-  <div class = "alert alert-success" *ngIf = "successfullySubmitted">Answer saved!</div>
-  <div class = "alert alert-error" *ngIf = "failToSubmit">Error occured.</div>
+  <div class = "alert alert-success mt-1" *ngIf = "successfullySubmitted">Answer saved!</div>
+  <div class = "alert alert-error mt-1" *ngIf = "failToSubmit">Error occured.</div>
 </div>

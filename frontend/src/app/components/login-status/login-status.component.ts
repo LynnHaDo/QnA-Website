@@ -22,6 +22,7 @@ export class LoginStatusComponent implements OnInit {
                         this.message = res['email']
                     }
                     else this.message = res['name'];
+                    this.authService.userId = res['id'];
                     RegisterService.authEmitter.emit(true); // authenticated
                 },
 

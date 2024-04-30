@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import CreateCourseAPIView, GetAnswerAPIView, GetAssignmentAPIView, GetAssignmentsAPIView, GetClustersAPIView, GetCoursesAPIView, GetQuestionAPIView, GetQuestionsAPIView, GetStudentAPIView, GetStudentsAPIView, PostAnswerAPIView, GetCourseAPIView, RemoveQuestionAPIView, RemoveStudentAPIView
+from .views import CreateCourseAPIView, GetAnswerAPIView, GetAssignmentAPIView, GetAssignmentsAPIView, GetClustersAPIView, GetClustersContentAPIView, GetCoursesAPIView, GetQuestionAPIView, GetQuestionsAPIView, GetQuestionsByTAIdAPIView, GetStudentAPIView, GetStudentsAPIView, PostAnswerAPIView, GetCourseAPIView, PostClaimedQuestionsAPIView, RemoveQuestionAPIView, RemoveStudentAPIView
 
 urlpatterns = [
     path("create-course", CreateCourseAPIView.as_view()),
@@ -16,5 +16,8 @@ urlpatterns = [
     path("remove-student", RemoveStudentAPIView.as_view()),
     path("get-answer/<int:question_id>", GetAnswerAPIView.as_view()),
     path("send-answer", PostAnswerAPIView.as_view()),
-    path("get-clusters/<int:assignment_id>", GetClustersAPIView.as_view())
+    path("get-clusters/<int:assignment_id>", GetClustersAPIView.as_view()),
+    path("get-clusters-content/<int:assignment_id>", GetClustersContentAPIView.as_view()),
+    path("post-claimed-questions", PostClaimedQuestionsAPIView.as_view()),
+    path("get-questions-by-answerer/<int:ta_id>", GetQuestionsByTAIdAPIView.as_view())
 ]

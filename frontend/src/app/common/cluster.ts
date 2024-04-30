@@ -3,4 +3,5 @@ export class Cluster {
     asmId!: number;
     answerers!: number[];
     questions!: number[];
+    claimedQuestions!: number[];
 }
