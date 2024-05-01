@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Question } from 'src/app/common/question';
 import { AssignmentService } from 'src/app/services/assignment.service';
 import { CourseService } from 'src/app/services/course.service';
+import { RegisterService } from 'src/app/services/register.service';
 
 @Component({
   selector: 'app-assignment-submissions',
@@ -17,13 +18,25 @@ export class AssignmentSubmissionsComponent {
     displayCF: string = "none";
     questionToBeDeletedId!: number;
 
-    constructor(private courseService: CourseService, 
-                private router: Router,
+    claimedQuestions: number[] = [];
+
+    constructor(private registerService: RegisterService,
                 private route: ActivatedRoute,
                 private assignmentService: AssignmentService){}
 
     ngOnInit(): void {
+        this.renderClaimedQuestions();
         this.renderSubmissions();
+    }
+
+    renderClaimedQuestions(){
+        this.assignmentService.getClaimedQuestions(this.registerService.userId).subscribe(
+            (data) => {
+                for (let dat of data){
+                    this.claimedQuestions.push(dat.id)
+                }
+            }
+        )
     }
 
     renderSubmissions(){
@@ -49,9 +62,12 @@ export class AssignmentSubmissionsComponent {
         const body = {
             "questionId": this.questionId
         }
-        this.assignmentService.removeQuestion(body).subscribe();
-        this.displayCF = "none";
-        this.renderSubmissions();
+        this.assignmentService.removeQuestion(body).subscribe((data) => {
+            this.renderClaimedQuestions();
+            this.renderSubmissions();
+            this.displayCF = "none";
+        });
+
     }
 
     closeModal(){

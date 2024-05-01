@@ -11,9 +11,13 @@
       <tbody>
         <tr *ngFor="let question of questions">
           <td>
-            <a routerLink = "questions/{{question.id}}">
+            <a *ngIf = "claimedQuestions.length == 0 || 
+                        (claimedQuestions.length != 0 && claimedQuestions.includes(question.id))" routerLink = "questions/{{question.id}}">
                 {{ question.content }}
             </a>
+            <p *ngIf = "claimedQuestions.length != 0 && !claimedQuestions.includes(question.id)">
+                {{ question.content }}
+            </p>
           </td>
           <td>
             <label class="checkbox-control">
