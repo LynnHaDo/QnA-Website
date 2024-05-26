@@ -81,6 +81,7 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 - [x] Clean question data (Remove n/a's) before saving it into database
 - [x] Render clusters to the frontend. 
 - [x] Add option to claim questions in the clusters. Reserve claimed questions. Save info to database.
+- [ ] Add option to answer multiple questions at once.
  
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
@@ -90,18 +91,11 @@ See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full
 ### Built With
 
 - Django 5.0.3
-    - asgiref==3.8.1
-    - cffi==1.16.0
-    - cryptography==42.0.5
-    - django-cors-headers==4.3.1
-    - djangorestframework==3.15.1
-    - mysqlclient==2.2.4
-    - pycparser==2.21
-    - PyJWT==2.8.0
-    - sqlparse==0.4.4
-    - typing_extensions==4.10.0
 - Angular 16.2.12
 - MySQL 8.3.0
+- [MailHog](https://github.com/mailhog/MailHog) (for testing emails)
+
+More information on packages can be found in `requirements.txt`.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -111,28 +105,41 @@ See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full
 ### Installation
 
 1. Clone the repo
-2. Navigate to `frontend` folder
-3. Before `npm install` to install packages, make sure the correct version of Angular is installed.
-4. Run on server
 
 ```
-ng s
+git clone https://github.com/LynnHaDo/QnA-Website.git
 ```
 
-5. Navigate to `backend` folder
-6. Run on server
+**Set up the backend**
+
+2. Navigate to `backend` folder
+3. Run on server
 
 ```
+cd backend
 python3 manage.py runserver
 ```
 
-#### Run Django scripts
+**Set up the frontend**
+
+4. Navigate to `frontend` folder
+5. Before `npm install` to install packages, make sure the correct version of Angular is installed.
+6. Run on server
+
+```
+cd ../frontend
+npm install 
+ng s
+```
+
+### Import data: Run Django scripts 
 
 *Refer to `backend/samples` for sample `.csv` files*
 
 - Import course
 
 ```
+cd backend
 python3 manage.py runscript import_course --script-args [PATH/TO/COURSE.csv FILE]
 ```
 
@@ -155,6 +162,8 @@ python3 manage.py runscript delete_questions --script-args [ASSIGNMENT_ID]
 ```
 
 - Generate clusters for all questions in an assignment
+
+**Note**: Clustering results differ each time this is invoked since the algorithm is non-deterministic. 
 
 ```
 python3 manage.py runscript create_clusters --script-args [ASSIGNMENT_ID]

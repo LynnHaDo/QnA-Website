@@ -408,8 +408,7 @@ Course detail
   color: currentColor;
   width: 1.15em;
   height: 1.15em;
-  border-radius: calc(1.15em / 2);
- 
+  border-radius: 3px;
 
   display: grid;
   place-content: center;
@@ -430,6 +429,10 @@ Course detail
   
 .checkbox-control input[type="checkbox"]:checked::before {
     transform: scale(1);
+}
+
+.checkbox-control.circle input[type="checkbox"] {
+    border-radius: calc(1.15em / 2);
 }
 
 

@@ -2,10 +2,35 @@
     <h1 class="mb-4">Selected questions</h1>
     
     <div *ngFor = "let q of claimedQuestions">
-        <label class="checkbox-control" style = "margin-top: 3px;">
+        <label class="checkbox-control circle" style = "margin-top: 3px;">
             <input type="checkbox" [checked] = "q.answeredStatus" [disabled]="true"/>
         </label>
         <a style = "margin-left: 5px;" routerLink = "../questions/{{ q.id }}">{{ q.content }}</a>
+    </div>
+
+    <div class = "mt-4">
+        <button class = "button mb-2" (click) = "openAnswerForm()">
+            Answer all
+        </button>
+        <div *ngIf = "isAnswerFormOpened">
+            <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
+                <div class="NgxEditor__Wrapper">
+                  <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                  <ngx-editor
+                    [editor]="editor"
+                    [(ngModel)]="html"
+                    [placeholder]="'Type here...'"
+                    formControlName="editorContent"
+                  ></ngx-editor>
+                </div>
+                <button type="submit" class="fill-btn mt-3" [disabled]="ansForm.invalid">
+                  Submit
+                </button>
+              </form>
+            
+              <div class = "alert alert-success mt-1" *ngIf = "successfullySubmitted">Answer saved!</div>
+              <div class = "alert alert-error mt-1" *ngIf = "failToSubmit">Error occured.</div>
+        </div>
     </div>
 </div>
 

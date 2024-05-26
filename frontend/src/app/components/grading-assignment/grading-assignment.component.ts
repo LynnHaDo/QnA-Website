@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SecurityContext } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { Router } from '@angular/router';
+import { Editor } from 'ngx-editor';
 import { Cluster } from 'src/app/common/cluster';
 import { Question } from 'src/app/common/question';
 import { AssignmentService } from 'src/app/services/assignment.service';
@@ -18,12 +21,23 @@ export class GradingAssignmentComponent implements OnInit {
     displayCF = "none";
     displayError = "none";
 
-    userId!: number;
-
     checked: number[] = [];
     claimedQuestions: Question[] = [];
     
-    asmId = +this.router.url.split("/grading-assignments")[0].split("/assignments")[1].split("/")[1]
+    asmId = +this.router.url.split("/grading-assignments")[0].split("/assignments")[1].split("/")[1];
+
+    /** Text editor */
+    isAnswerFormOpened = false;
+    editor: Editor = new Editor();
+    html = '';
+    renderedHtmlContent: SafeHtml = "";
+
+    successfullySubmitted: boolean = false;
+    failToSubmit: boolean = false;
+
+    ansForm: FormGroup = this.formBuilder.group({
+        editorContent: new FormControl("", Validators.required)
+    })
     
     ngOnInit(): void {
         this.renderClaimedQuestions();
@@ -32,7 +46,10 @@ export class GradingAssignmentComponent implements OnInit {
 
     constructor(private assignmentService: AssignmentService,
                 private router: Router,
-                private registerService: RegisterService
+                private registerService: RegisterService,
+                private formBuilder: FormBuilder,
+                private sanitzer: DomSanitizer,
+                private questionService: QuestionServiceService
     ){}
 
     renderCluster(){
@@ -66,6 +83,37 @@ export class GradingAssignmentComponent implements OnInit {
         } else {
           this.checked.push(id);
         }
+    }
+
+    openAnswerForm() {
+        this.isAnswerFormOpened = true;
+    }
+
+    onSubmit() {
+        this.registerService.user().subscribe({
+            next: (res: any) => {
+                for (let q of this.claimedQuestions) {
+                    let body = {
+                        "content": this.html,
+                        "taId": this.registerService.userId,
+                        "questionId": q.id
+                    }
+                    this.questionService.postAnswer(body).subscribe(
+                        (data) => {}
+                    );
+                }
+                this.renderClaimedQuestions();
+                this.successfullySubmitted = true;
+                this.isAnswerFormOpened = false;
+            },
+            error: (err) => {
+                this.failToSubmit = true;
+            }
+        })
+    }
+
+    sanitizeHtmlContent(htmlstring: string): SafeHtml {
+        return this.sanitzer.sanitize(SecurityContext.HTML, htmlstring)!;
     }
 
     confirmSelection(){
