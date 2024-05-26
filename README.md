@@ -76,12 +76,13 @@ Link to the [wireframes](https://www.figma.com/file/DMuoU60lWRVJYB5TXk9u9G/QnA?t
 - [x] Render questions, assignments, roster 
 - [x] Integrate text editor to answer submission
 - [x] Render answer on the front-end, post answer to database 
-  - Fix some issues with permissions
+  - [ ] Fix some issues with permissions
 - [x] Generate clusters. Save those to the database
 - [x] Clean question data (Remove n/a's) before saving it into database
 - [x] Render clusters to the frontend. 
 - [x] Add option to claim questions in the clusters. Reserve claimed questions. Save info to database.
-- [ ] Add option to answer multiple questions at once.
+- [x] Add option to answer multiple questions at once.
+  - [ ] Fix bug with rendering questions after answering
  
 
 See the [open issues](https://github.com/LynnHaDo/QnA-Website/issues) for a full list of proposed features (and known issues).
