@@ -51,6 +51,11 @@ export class AssignmentService {
         return this.httpClient.post(url, formBody, {withCredentials: true});
     }
 
+    unclaimQuestions(formBody: any){
+        const url = `${this.baseUrl}/unclaim-questions`;
+        return this.httpClient.post(url, formBody, {withCredentials: true});
+    }
+
     getClaimedQuestions(taId: number){
         const url = `${this.baseUrl}/get-questions-by-answerer/${taId}`;
         return this.httpClient.get<Question[]>(url).pipe();

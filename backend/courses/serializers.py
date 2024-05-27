@@ -38,7 +38,7 @@ class QuestionSerializer(ModelSerializer):
 class AnswerSerializer(ModelSerializer):
     class Meta:
         model = Answer
-        fields = ['id', 'content', 'taId', 'questionId']
+        fields = ['id', 'content', 'taId', 'questionId', 'dateSubmitted']
     
     def create(self, validated_data):
         instance = self.Meta.model(**validated_data) 

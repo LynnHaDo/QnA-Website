@@ -20,9 +20,13 @@ export class GradingAssignmentComponent implements OnInit {
 
     displayCF = "none";
     displayError = "none";
+    displayRM = "none";
 
-    checked: number[] = [];
+    claimed: number[] = [];
     claimedQuestions: Question[] = [];
+
+    selected: number[] = [];
+    selectedQuestions: Question[] = [];
     
     asmId = +this.router.url.split("/grading-assignments")[0].split("/assignments")[1].split("/")[1];
 
@@ -61,14 +65,6 @@ export class GradingAssignmentComponent implements OnInit {
         this.loadClusterContent(this.asmId)
     }
 
-    renderClaimedQuestions(){
-        this.assignmentService.getClaimedQuestions(this.registerService.userId).subscribe(
-            (data) => {
-                this.claimedQuestions = data;
-            }
-        )
-    }
-
     loadClusterContent(id: number){
         this.assignmentService.getClustersContent(id).subscribe(
             (data) => {
@@ -77,32 +73,53 @@ export class GradingAssignmentComponent implements OnInit {
         )
     }
 
-    onChange(id: number): void {
-        if (this.checked.includes(id)) {
-          this.checked = this.checked.filter((item) => item !== id);
-        } else {
-          this.checked.push(id);
+    renderClaimedQuestions(){
+        this.assignmentService.getClaimedQuestions(this.registerService.userId).subscribe(
+            (data) => {
+                this.claimedQuestions = data;
+            }
+        )
+    }
+
+    onSelect(id: number): void {
+        if (this.selected.includes(id)) { // uncheck 
+          this.selected = this.selected.filter((item) => item !== id);
+        } else { // check
+          this.selected.push(id);
         }
     }
 
+    onClaim(id: number): void {
+        if (this.claimed.includes(id)) { // uncheck
+            this.claimed = this.claimed.filter((item) => item !== id);
+        } else {
+            this.claimed.push(id);
+        }
+    }
+    
     openAnswerForm() {
-        this.isAnswerFormOpened = true;
+        if (this.selected.length == 0){
+            this.displayError = "block";
+        } else {
+            this.isAnswerFormOpened = true;
+        }
     }
 
     onSubmit() {
         this.registerService.user().subscribe({
             next: (res: any) => {
-                for (let q of this.claimedQuestions) {
+                for (let q of this.selected) {
                     let body = {
                         "content": this.html,
                         "taId": this.registerService.userId,
-                        "questionId": q.id
+                        "questionId": q
                     }
                     this.questionService.postAnswer(body).subscribe(
-                        (data) => {}
+                        (data) => {
+                            this.renderClaimedQuestions();
+                        }
                     );
                 }
-                this.renderClaimedQuestions();
                 this.successfullySubmitted = true;
                 this.isAnswerFormOpened = false;
             },
@@ -116,8 +133,8 @@ export class GradingAssignmentComponent implements OnInit {
         return this.sanitzer.sanitize(SecurityContext.HTML, htmlstring)!;
     }
 
-    confirmSelection(){
-        if (this.checked.length == 0){
+    confirmClaimSelection(){
+        if (this.claimed.length == 0){
             this.displayError = "block";
         } else {
             this.displayCF = "block";
@@ -126,6 +143,10 @@ export class GradingAssignmentComponent implements OnInit {
 
     closeModal(){
         this.displayCF = "none";
+    }
+
+    closeRMModal(){
+        this.displayRM = "none";
     }
 
     closeModalError(){
@@ -140,13 +161,38 @@ export class GradingAssignmentComponent implements OnInit {
         const body = {
             "ta_id": this.registerService.userId,
             "assignment_id": this.asmId,
-            "claimedQuestions": this.checked
+            "claimedQuestions": this.claimed
         }
         this.assignmentService.postClaimedQuestions(body).subscribe((data) => {
             this.renderCluster();
             this.renderClaimedQuestions();
         });
         this.displayCF = "none";
+        this.claimed = [];
+    }
+
+    openRemoveQuestionModal() {
+        if (this.selected.length == 0) {
+            this.displayError = "block";
+        } else {
+            this.displayRM = "block";
+        }
+    }
+
+    unclaimQuestions() {
+        const body = {
+            "ta_id": this.registerService.userId,
+            "assignment_id": this.asmId,
+            "claimedQuestions": this.selected
+        }
+
+        this.assignmentService.unclaimQuestions(body).subscribe(data => {
+            this.renderClaimedQuestions();
+            this.renderCluster();
+        })
+
+        this.displayRM = "none";
+        this.selected = [];
     }
 }
 

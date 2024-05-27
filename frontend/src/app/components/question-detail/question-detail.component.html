@@ -3,10 +3,20 @@
   <p style = "color: var(--light-purple)">{{ question.content }}</p>
   <em>By: {{ student.email }}</em>
 
-  <h1 class="mt-4 mb-4">Answer</h1>
-  <div [innerHTML]="renderedHtmlContent"></div>
+  <h1 class="mt-4 mb-3">Answer</h1>
+  <div *ngIf = "dateAnswered != ''" class = "task-bar mb-3">
+    <div class = "annotation mb-2">
+        Submitted on {{ dateAnswered }}
+      </div>
+      <div [innerHTML]="renderedHtmlContent"></div>
+      <div class="d-flex align-items-center justify-content-end mt-3">
+        <button class = "button fill-btn" (click) = "isEditMode = true">
+            Edit answer
+        </button>
+      </div>
+  </div>
 
-  <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
+  <form *ngIf = "isEditMode || renderedHtmlContent == ''" [formGroup]="ansForm" (ngSubmit)="onSubmit()">
     <div class="NgxEditor__Wrapper">
       <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
       <ngx-editor
@@ -16,9 +26,14 @@
         formControlName="editorContent"
       ></ngx-editor>
     </div>
-    <button type="submit" class="fill-btn mt-3" [disabled]="ansForm.invalid">
-      Submit
-    </button>
+    <div class="d-flex align-items-center justify-content-end mt-3 mb-3">
+        <button class="button outline-btn" style = "margin-right: 10px" (click)="isEditMode = false;">
+          Cancel
+        </button>
+        <button type="submit" class="fill-btn" [disabled]="ansForm.invalid">
+          Submit
+        </button>
+    </div>
   </form>
 
   <div class = "alert alert-success mt-1" *ngIf = "successfullySubmitted">Answer saved!</div>

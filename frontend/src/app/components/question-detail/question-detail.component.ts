@@ -1,13 +1,16 @@
-import { Component, ElementRef, OnDestroy, OnInit, SecurityContext, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, SecurityContext, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { ActivatedRoute } from '@angular/router';
 import { Editor } from 'ngx-editor';
 import { Question } from 'src/app/common/question';
 import { Student } from 'src/app/common/student';
+
 import { AssignmentService } from 'src/app/services/assignment.service';
 import { QuestionServiceService } from 'src/app/services/question-service.service';
 import { RegisterService } from 'src/app/services/register.service';
+
+import { formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-question-detail',
@@ -19,9 +22,11 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
     student!: Student;
     oParser = new DOMParser();
 
+    isEditMode: boolean = false;
     editor: Editor = new Editor();
     html = '';
     renderedHtmlContent: SafeHtml = "";
+    dateAnswered = "";
 
     successfullySubmitted: boolean = false;
     failToSubmit: boolean = false;
@@ -70,6 +75,7 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
             this.questionService.getAnswerToQuestion(this.question.id).subscribe(
                 (data) => {
                     this.renderedHtmlContent = this.sanitizeHtmlContent(data['content']);
+                    this.dateAnswered = formatDate(data['dateSubmitted'],'short', "en_US");;
                 }
             )
         }
@@ -87,6 +93,7 @@ export class QuestionDetailComponent implements OnInit, OnDestroy {
                     (data) => {
                         this.renderQuestion();
                         this.successfullySubmitted = true;
+                        this.isEditMode = false;
                     }
                 );
                 

@@ -311,8 +311,8 @@ class GetClustersContentAPIView(APIView):
             for c in clusters:
                 questions = []
                 for q in c.questions.all():
-                    # Filter out questions that have been answered/claimed
-                    if q.answeredStatus == True or q.claimedStatus == True:
+                    # Filter out questions that have been claimed
+                    if q.claimedStatus == True:
                         continue
 
                     questions.append({
@@ -353,6 +353,44 @@ class PostClaimedQuestionsAPIView(APIView):
                 )
             else:
                 ans.taId = User.objects.filter(id = ta_id).first() # Update the answerer to be the TA
+                ans.save()
+
+        return Response({
+                "message": "success"
+        })
+
+class RemoveClaimedQuestionsAPIView(APIView):
+    def post(self, request):
+        assignment_id = request.data["assignment_id"]
+        questions_unclaimed = request.data["claimedQuestions"]
+        ta_id = request.data["ta_id"]
+
+        ta = User.objects.filter(id = ta_id).first()
+        if ta is None:
+            raise exceptions.NotFound("TA id invalid")
+
+        asm = Assignment.objects.filter(id = assignment_id).first()
+
+        if asm is None:
+            raise exceptions.NotFound("Assignment id invalid")
+        
+        questions = Question.objects.filter(assignmentId = assignment_id, id__in=questions_unclaimed).all()
+
+        if questions is None:
+            raise exceptions.NotFound("These questions are not found in this assignment")
+        
+        # Unclaim
+        questions.update(claimedStatus = False)
+        
+        for q in questions:
+            ans = Answer.objects.filter(questionId = q, taId = ta).first()
+            if ans is None:
+                continue
+
+            if q.answeredStatus == False:
+                ans.delete()
+            else:
+                ans.taId = None # Remove claimed status
                 ans.save()
 
         return Response({

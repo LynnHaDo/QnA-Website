@@ -7,8 +7,8 @@ Universal
     --white: #FFFFFF;
     --light-purple: #8E55D7;
     --light-purple-inactive: rgba(142, 85, 215, .24);
-    --light-gray: #F5F5F5;
-    --dark-gray: #D9D9D9;
+    --light-gray: #D8D8D8;
+    --dark-gray: #444444;
     --yellow: #f4d65e;
     --light-yellow: #FFEFD7;
     --green: #9FD5B7;
@@ -17,6 +17,7 @@ Universal
     --border-radius: 15px;
     --button-border-radius: 10px;
     --input-height: 45px;
+    --small-text-size: 13px;
 }
 
 html {
@@ -62,6 +63,7 @@ button {
     color: var(--white);
     font-weight: 600;
     text-align: center;
+    padding: 0 10px;
 }
 
 button.outline-btn {
@@ -91,7 +93,7 @@ button.outline-btn:hover {
 }
 
 button:disabled, button:disabled:hover {
-    background-color: var(--dark-gray);
+    background-color: var(--light-gray);
 }
 
 input:-webkit-autofill,
@@ -110,7 +112,7 @@ input[type=text], input[type=email], input[type=password] {
     background-color: transparent;
     outline:none;
     border-radius: var(--button-border-radius);
-    border: 1px solid var(--dark-gray);
+    border: 1px solid var(--light-gray);
     padding-left: 20px;
 }
 
@@ -129,6 +131,59 @@ input[type=text], input[type=email], input[type=password] {
 .flexbox {
     display: flex;
     align-items: center;
+}
+
+table.table, th, td {
+    background-color: transparent!important;
+}
+
+.annotation {
+    font-size: var(--small-text-size);
+    font-style: italic;
+    color: var(--dark-gray)
+}
+
+/*Source: https://moderncss.dev/pure-css-custom-checkbox-style/*/
+
+.checkbox-control input[type=checkbox]{
+    /* Add if not using autoprefixer */
+  -webkit-appearance: none;
+  /* Remove most all native input styles */
+  appearance: none;
+  border: 1px solid var(--light-purple);
+  /* Not removed via appearance */
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border-radius: 3px;
+
+  display: grid;
+  place-content: center;
+}
+
+.checkbox-control input[type="checkbox"]::before {
+    content: "";
+    width: 0.65em;
+    height: 0.65em;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+    transform: scale(0);
+    transform-origin: bottom left;
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em var(--light-purple);
+    /* Windows High Contrast Mode */
+    background-color: CanvasText;
+  }
+  
+.checkbox-control input[type="checkbox"]:checked::before {
+    transform: scale(1);
+}
+
+.checkbox-control.circle input[type="checkbox"] {
+    border-radius: calc(1.15em / 2);
+    background-color: var(--light-purple-inactive);
 }
 
 /**************
@@ -170,11 +225,11 @@ Login
 
 .form-box .input-field label {
     position: absolute;
-    top: -15px;
+    top: -10px;
     left: 15px;
     background-color: var(--white);
     padding: 0 5px;
-    font-size: 14px;
+    font-size: var(--small-text-size);
     color: var(--dark-gray)
 }
 
@@ -187,11 +242,11 @@ Login
     width: calc(100% - 100px);
     display: block;
     height: 1px;
-    background-color: var(--dark-gray);
+    background-color: var(--light-gray);
 }
 
 .form-box p.decorative {
-    color: var(--dark-gray);
+    color: var(--light-gray);
     text-transform: uppercase;
     font-weight: 200;
     font-size: 14px;
@@ -204,7 +259,7 @@ Login
 }
 
 .error-message p {
-    font-size: 13px;
+    font-size: var(--small-text-size);
     color: var(--red);
     margin-bottom: 0;
 }
@@ -298,7 +353,7 @@ aside.menu-sidebar {
 }
 
 .progressbar {
-    background-color: var(--dark-gray);
+    background-color: var(--light-gray);
     border-radius: 5px;
     /* (height of inner div) / 2 + padding */
     padding: 1px;
@@ -390,49 +445,6 @@ Course detail
 
 .task-item p {
     margin-bottom: 0;
-}
-
-/*Source: https://moderncss.dev/pure-css-custom-checkbox-style/*/
-
-.checkbox-control input[type=checkbox]{
-    /* Add if not using autoprefixer */
-  -webkit-appearance: none;
-  /* Remove most all native input styles */
-  appearance: none;
-  /* For iOS < 15 */
-  background-color: var(--light-purple-inactive);
-  /* Not removed via appearance */
-  margin: 0;
-
-  font: inherit;
-  color: currentColor;
-  width: 1.15em;
-  height: 1.15em;
-  border-radius: 3px;
-
-  display: grid;
-  place-content: center;
-}
-
-.checkbox-control input[type="checkbox"]::before {
-    content: "";
-    width: 0.65em;
-    height: 0.65em;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-    transform: scale(0);
-    transform-origin: bottom left;
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em var(--light-purple);
-    /* Windows High Contrast Mode */
-    background-color: CanvasText;
-  }
-  
-.checkbox-control input[type="checkbox"]:checked::before {
-    transform: scale(1);
-}
-
-.checkbox-control.circle input[type="checkbox"] {
-    border-radius: calc(1.15em / 2);
 }
 
 

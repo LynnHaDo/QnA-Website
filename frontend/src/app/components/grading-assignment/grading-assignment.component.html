@@ -1,64 +1,115 @@
-<div *ngIf = "claimedQuestions.length > 0" class="course-section task-bar mb-5">
-    <h1 class="mb-4">Selected questions</h1>
-    
-    <div *ngFor = "let q of claimedQuestions">
-        <label class="checkbox-control circle" style = "margin-top: 3px;">
-            <input type="checkbox" [checked] = "q.answeredStatus" [disabled]="true"/>
-        </label>
-        <a style = "margin-left: 5px;" routerLink = "../questions/{{ q.id }}">{{ q.content }}</a>
+<div *ngIf="claimedQuestions.length > 0" class="course-section task-bar mb-5">
+  <h1 class="mb-4">Selected questions</h1>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Answered</th>
+        <th>Select</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let q of claimedQuestions">
+        <td>
+          <a routerLink="../questions/{{ q.id }}">{{ q.content }}</a>
+        </td>
+        <td>
+          <label class="checkbox-control circle" style="margin-top: 3px">
+            <input
+              type="checkbox"
+              [checked]="q.answeredStatus"
+              [disabled]="true"
+            />
+          </label>
+        </td>
+        <td>
+          <label class="checkbox-control" style="margin-top: 3px">
+            <input type="checkbox" (change)="onSelect(q.id)" />
+          </label>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="mt-4">
+    <div class="d-flex align-items-center justify-content-end mb-4">
+      <button class="button outline-btn" style = "margin-right: 10px" (click)="openRemoveQuestionModal()">
+        Remove selected questions
+      </button>
+      <button class="button fill-btn" (click)="openAnswerForm()">
+        Answer selected questions
+      </button>
     </div>
 
-    <div class = "mt-4">
-        <button class = "button mb-2" (click) = "openAnswerForm()">
-            Answer all
-        </button>
-        <div *ngIf = "isAnswerFormOpened">
-            <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
-                <div class="NgxEditor__Wrapper">
-                  <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
-                  <ngx-editor
-                    [editor]="editor"
-                    [(ngModel)]="html"
-                    [placeholder]="'Type here...'"
-                    formControlName="editorContent"
-                  ></ngx-editor>
-                </div>
-                <button type="submit" class="fill-btn mt-3" [disabled]="ansForm.invalid">
-                  Submit
-                </button>
-              </form>
-            
-              <div class = "alert alert-success mt-1" *ngIf = "successfullySubmitted">Answer saved!</div>
-              <div class = "alert alert-error mt-1" *ngIf = "failToSubmit">Error occured.</div>
+    <div *ngIf="isAnswerFormOpened" class="row">
+      <form [formGroup]="ansForm" (ngSubmit)="onSubmit()">
+        <div class="NgxEditor__Wrapper">
+          <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+          <ngx-editor
+            [editor]="editor"
+            [(ngModel)]="html"
+            [placeholder]="'Type here...'"
+            formControlName="editorContent"
+          ></ngx-editor>
         </div>
+        <button
+          type="submit"
+          class="fill-btn mt-3"
+          [disabled]="ansForm.invalid"
+        >
+          Submit
+        </button>
+      </form>
+
+      <div class="alert alert-success mt-1" *ngIf="successfullySubmitted">
+        Answer saved!
+      </div>
+      <div class="alert alert-error mt-1" *ngIf="failToSubmit">
+        Error occured.
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="course-section">
   <h1 class="mb-4">All question groups</h1>
 
   <p>Please select a set of questions you want to answer.</p>
-
-  <button class = "button mb-2" (click) = "confirmSelection()">
-     Confirm selection
-  </button>
+  
+  <div class = "d-flex justify-content-end mt-2 mb-2">
+    <button class="button mb-2" (click)="confirmClaimSelection()">
+        Confirm selection
+    </button>
+  </div>
 
   <div class="cluster-wrapper">
-    <div *ngFor="let cluster of clusters; let i=index" class="card mb-3">
+    <div *ngFor="let cluster of clusters; let i = index" class="card mb-3">
       <div class="card-header">
         <h5 class="mb-0">Group {{ cluster.id }}</h5>
       </div>
       <div class="card-body">
-        <div *ngIf = "clusterContent[i].length == 0">
-            <em>All questions for this group has been claimed.</em>
+        <div *ngIf="clusterContent[i].length == 0">
+          <em>All questions for this group has been claimed.</em>
         </div>
-        <div *ngIf = "clusterContent[i].length > 0">
-            <div *ngFor = "let content of clusterContent[i]" style = "display: flex; align-items: start;">
-                <label class="checkbox-control" style = "margin-top: 3px;">
-                    <input type="checkbox" value = "{{ content.id }}" (change)="onChange(content.id)"/>
-                </label>
-                <a style = "margin-left: 5px;" routerLink = "../questions/{{ content.id }}">{{ content.content }}</a>
-            </div>
+        <div *ngIf="clusterContent[i].length > 0">
+          <div
+            *ngFor="let content of clusterContent[i]"
+            style="display: flex; align-items: start"
+          >
+            <label class="checkbox-control" style="margin-top: 3px">
+              <input
+                type="checkbox"
+                value="{{ content.id }}"
+                (change)="onClaim(content.id)"
+              />
+            </label>
+            <a
+              style="margin-left: 5px"
+              routerLink="../questions/{{ content.id }}"
+              >{{ content.content }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -76,12 +127,14 @@
 >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        Please select at least 1 question!
-      </div>
+      <div class="modal-body">Please select at least 1 question!</div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" (click)="closeModalError()">
-            Close
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeModalError()"
+        >
+          Close
         </button>
       </div>
     </div>
@@ -99,14 +152,46 @@
 >
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
-      <div class="modal-body">
-        Are you sure with your questions selection?
-      </div>
+      <div class="modal-body">Are you sure with your questions selection?</div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" (click)="closeModal()">
-            Close
+          Close
         </button>
         <button type="button" class="btn btn-danger" (click)="postSelection()">
+          Confirm
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal"
+  id="removeModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="removeModalLabel"
+  aria-hidden="true"
+  [ngStyle]="{ display: displayRM }"
+>
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        Are you sure that you want to pass these {{ selected.length }} questions? If any of these questions have been answered, your progress is still saved.
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="btn btn-secondary"
+          (click)="closeRMModal()"
+        >
+          Close
+        </button>
+        <button
+          type="button"
+          class="btn btn-danger"
+          (click)="unclaimQuestions()"
+        >
           Confirm
         </button>
       </div>
