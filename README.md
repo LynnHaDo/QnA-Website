@@ -111,21 +111,29 @@ More information on packages can be found in `requirements.txt`.
 git clone https://github.com/LynnHaDo/QnA-Website.git
 ```
 
-**Set up the backend**
+**Set up email testing**
 
 2. Navigate to `backend` folder
-3. Run on server
+3. Activate Mailhog
 
 ```
 cd backend
+mailhog
+```
+
+**Set up the backend**
+
+4. Run on server
+
+```
 python3 manage.py runserver
 ```
 
 **Set up the frontend**
 
-4. Navigate to `frontend` folder
-5. Before `npm install` to install packages, make sure the correct version of Angular is installed.
-6. Run on server
+5. Navigate to `frontend` folder
+6. Before `npm install` to install packages, make sure the correct version of Angular is installed.
+7. Run on server
 
 ```
 cd ../frontend
